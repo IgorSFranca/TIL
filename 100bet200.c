@@ -1,3 +1,7 @@
+/*Elaborar um algoritmo que leia números e imprima no final
+quantos números entre 100 e 200 foram digitados. Quando o valor 0 (zero)
+for lido, o algoritmo deve parar a sua execução. */
+
 #include <stdio.h>
 #include <stdlib.h>
 

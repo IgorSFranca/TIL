@@ -1,3 +1,7 @@
+/*Elaborar um algoritmo que leia números enquanto forem positivos
+e imprima quantos números foram digitados e média dos números
+digitados. */
+
 #include <stdio.h>
 #include <stdlib.h>
 

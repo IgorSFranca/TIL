@@ -1,3 +1,14 @@
+/*Apresente o seguinte menu ao usuário e realize a opção escolhida:
+1. Comprar
+Mostre a opção de 2 produtos e respectivos valores: ItemA:$50 ItemB:$30.
+Compute a compra do usuário para um dos itens
+2. Resumo da Compra
+Mostre a quantidade de itens comprados de cada produto, total a pagar por
+produto, total geral de itens comprados e total geral a pagar
+3. Encerrar
+Mostre o total de itens comprados e o total a pagar
+O menu é exibido enquanto a opção for diferente de 3*/
+
 #include <stdio.h>
 #include <string.h>
 

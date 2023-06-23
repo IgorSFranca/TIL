@@ -1,3 +1,10 @@
+/*Obtenha um número inteiro entre 0 e 9, aleatoriamente:
+Adivinhar o número inteiro entre 0 e 9, presente em x, com até 3 tentativas.
+Para cada tentativa incorreta, dar uma dica ao usuário: o número procurado é
+maior/menor que o número informado.
+Apresente o número de tentativas utilizadas e o valor de x.
+*/
+
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
