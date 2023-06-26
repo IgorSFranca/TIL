@@ -21,6 +21,8 @@ int main (){
             cont ++;
             if (num % cont == 0)
                 printf("%i ", cont);
+            if (num == -999)
+                break;
         } while (num != cont-1);
         cont = 0;
     } while (num != -999);
