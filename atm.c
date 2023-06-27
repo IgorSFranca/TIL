@@ -22,21 +22,29 @@ int main (){
                 printf("Valor do saque: R$ ");
                 scanf("%f", &valor);
                 saldo = saldo - valor;
+                printf("Saldo atual ......................... R$ %.2f\n\n", saldo);
+                if (saldo < 0)
+                    printf("O Seu saldo esta negativo.\n");
                 break;
             case 33:
                 printf("Valor do deposito: R$ ");
                 scanf("%f", &valor);
                 saldo = saldo + valor;
+                printf("Saldo atual ......................... R$ %.2f\n\n", saldo);
                 break;
             case 4:
                 printf("Valor do cheque: R$ ");
                 scanf("%f", &valor);
                 saldo = saldo - valor;
+                printf("Saldo atual ......................... R$ %.2f\n\n", saldo);
+                if (saldo < 0)
+                    printf("O Seu saldo esta negativo.\n");
                 break;
             case 0:
                 break;
         }
     } while (option != 0);
+    printf("Programa encerrado\n");
     system ("pause");
     return 0;
 }
