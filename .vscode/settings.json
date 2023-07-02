@@ -53,6 +53,7 @@
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp.errorSquiggles": "enabled",
   "files.associations": {
-    "stdio.h": "c"
+    "stdio.h": "c",
+    "stdlib.h": "c"
   }
 }
