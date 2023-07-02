@@ -8,19 +8,20 @@ trás para frente) e imprima uma mensagem correspondente.*/
 
 int main (){
   int i, cont = 0;
-  char palindo[] = {"omo"}, pavindo[sizeof(palindo)-2];
-  printf("A palavra atual eh: %s\n", palindo); //apresentando a palavra
-  for (i=0; i<= (sizeof(palindo)-2); i++) //invertendo as letras no outro array
-    pavindo[(sizeof(palindo)-2-i)] = palindo[i]; 
+  char palindo[40], pavindo[strlen(palindo)];
+  printf("Informe a palavra para ser verificada: ");
+  scanf("%s", &palindo);
+  for (i=0; i<= (strlen(palindo)-1); i++) //invertendo as letras no outro array
+    pavindo[(strlen(palindo)-1-i)] = palindo[i]; 
   printf("A palavra invertida eh: ");
-  for (i=0; i<=(sizeof(palindo)-2); i++) //mostrando o array com as letras invertidas
+  for (i=0; i<=(strlen(palindo)); i++) //mostrando o array com as letras invertidas
     printf("%c", pavindo[i]); 
   printf("\n");
-  for (i=0; i<=(sizeof(palindo)-2); i++){//calculando se as letras sao iguais
+  for (i=0; i<=(strlen(palindo)-1); i++){//calculando se as letras sao iguais
     if (palindo[i] == pavindo[i])
       cont++;
   }
-  if (cont == (sizeof(palindo)-1))//mostrando o resultado encontrado
+  if (cont == (strlen(palindo)))//mostrando o resultado encontrado
     printf ("A palavra EH UM palindromo.\n");
   else
     printf("A palavra NAO EH um palindromo.\n");
