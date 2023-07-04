@@ -7,9 +7,9 @@ retorna o fatorial desse número.*/
 void fatorial(int num){
   int total=1;
   for (int i=num; i>=1; i--){
-    total = //Descobrir como faz o fatorial
+    total = total * i;
   }
-  printf("%i\n", soma);
+  printf("O fatorial de %i eh %i\n", num, total);
 }
 
 int main (){
