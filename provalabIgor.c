@@ -1,3 +1,10 @@
+/*
+
+************************
+***** Atividade 01 ***** 
+************************
+
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -37,52 +44,49 @@ int main (){
     system ("pause");
     return 0;
 }
-/*
-
-************************
-***** Atividade 01 ***** 
-************************
-
-
 
 ************************
 ***** Atividade 02 ***** 
 ************************
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
 
 int main (){
     int itens;
-    printf("--------------\n");
-    printf("LOJA DE CAIXAS\n");
-    printf("--------------\n\n");
+    printf("-------------------------------------\n");
+    printf("            LOJA DE CAIXAS           \n");
+    printf("-------------------------------------\n\n");
     printf("Capacidade de armazenagem: \n");
     printf("Caixa G: max 13 itens\n");
     printf("Caixa M: max 7 itens\n");
     printf("Caixa P: max 4 itens\n");
-    printf("--------------------\n");
+    printf("--------------------------------------\n");
     printf("Informe quantos itens deseja guardar: ");
     scanf("%i", &itens);
-    printf("Serao necessarias: \n");
-    if (itens/13 >= 1){
-        printf("%i caixas G\n", (itens/13));
-        itens = itens % 13;
+    if (itens>0){
+        printf("Serao necessarias: \n");
+        if (itens/13 >= 1){
+            printf("%i caixas G\n", (itens/13));
+            itens = itens % 13;
+        }
+        if (itens/7 >= 1){
+            printf("%i caixas M\n", (itens/7));
+            itens = itens % 7;
+        }
+        if (itens/4 >= 1){
+            printf("%i caixas P\n", (itens/4));
+            itens = itens % 4;
+        }
+        printf("E sobrarao %i itens para completar uma nova caixa.\n", itens);
     }
-    if (itens/7 >= 1){
-        printf("%i caixas M\n", (itens/7));
-        itens = itens % 7;
-    }
-    if (itens/4 >= 1){
-        printf("%i caixas P\n", (itens/4));
-        itens = itens % 4;
-    }
-    printf("E sobrarao %i itens para completar uma nova caixa.\n", itens);
-
-
+    else
+        printf("Quantidade negativa nao aceita\n");
     system ("pause");
     return 0;
-}
+}/*
+
 ************************
 ***** Atividade 03 ***** 
 ************************
