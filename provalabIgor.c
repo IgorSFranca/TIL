@@ -48,7 +48,6 @@ int main (){
 ************************
 ***** Atividade 02 ***** 
 ************************
-*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -85,12 +84,12 @@ int main (){
         printf("Quantidade negativa nao aceita\n");
     system ("pause");
     return 0;
-}/*
+}
 
 ************************
 ***** Atividade 03 ***** 
 ************************
-
+*/
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -127,7 +126,7 @@ int main (){
     printf("A soma dos valores multiplos de 5 eh %i,\n", soma);
     system ("pause");
     return 0;
-}
+}/*
 ************************
 ***** Atividade 04 ***** 
 ************************
