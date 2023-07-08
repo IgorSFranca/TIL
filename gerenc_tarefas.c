@@ -31,12 +31,3 @@ funções. Além disso, você também pode considerar a criação de um arquivo
 para armazenar as tarefas de forma persistente, permitindo que elas sejam 
 recuperadas mesmo após o programa ser encerrado.*/
 
-#include <stdio.h>
-#include <stdlib.h>
-
-int main (){
-
-
-  system ("pause");
-  return 0;
-}
