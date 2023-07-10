@@ -31,3 +31,34 @@ funções. Além disso, você também pode considerar a criação de um arquivo
 para armazenar as tarefas de forma persistente, permitindo que elas sejam 
 recuperadas mesmo após o programa ser encerrado.*/
 
+#include <stdio.h>
+#include <stdlib.h>
+
+int main (){
+    int opcao; 
+    printf("=============================================\n");
+    printf("            GERENCIADOR DE TAREFAS           \n");
+    printf("=============================================\n");
+    printf("OPCOES: \n");
+    printf("[1] Nova Tarefa\n");
+    printf("[2] Excluir Tarefa\n");
+    printf("[3] Concluir Tarefa\n");
+    printf("[4] Visualizar Tarefas\n");
+    printf("[5+] Encerrar aplicativo\n");
+    printf("=============================================\n");
+    do{
+        printf("Opcao escolhida: ");
+        scanf("%i", &opcao);
+        switch (opcao){
+            case 1: 
+            case 2:
+            case 3:
+            case 4:
+            case 5: break;
+            default: 
+                printf("Opcao invalida!\n");
+        }
+    } while (opcao!=5);
+    system ("pause");
+    return 0;
+}
