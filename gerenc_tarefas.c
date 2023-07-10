@@ -33,6 +33,7 @@ recuperadas mesmo após o programa ser encerrado.*/
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main (){
     int opcao, i; 
@@ -55,12 +56,14 @@ int main (){
                 printf("---------------------------------------------\n");
                 printf("             INCLUIR NOVA TAREFA             \n");
                 printf("---------------------------------------------\n");
-                for (i=0;i<=0;i++){
+                for (i=0;i<=1;i++){
                     printf("Descricao da tarefa: ");
-                    scanf("%s", &tarefa[i+1]);
+                    fgets(tarefa[i+1], sizeof(tarefa), stdin);
+                    tarefa[strcspn(tarefa, "\n")] = '\0';
                     printf("Situacao [P=Pendente][C=Concluida]: ");
-                    scanf("%s", &tarefa[i+2]);
-                    }
+                    fgets(tarefa[i+2], sizeof(tarefa), stdin);
+                    tarefa[strcspn(tarefa, "\n")] = '\0';
+                }
                 printf("---------------------------------------------\n");
                 break;
             case 2: //exc_tarefa(); break;
@@ -69,10 +72,8 @@ int main (){
                 printf("---------------------------------------------\n");
                 printf("             VISUALIZAR TAREFAS              \n");
                 printf("---------------------------------------------\n");
-                for (i=0; i<=sizeof(tarefa);i++){
-                    printf("TAREFA: %s \n", tarefa[i+1]);
-                    printf("SITUACAO: %s \n", tarefa[i+2]);
-                }
+                printf("TAREFA: %s\n", tarefa);
+                printf("SITUACAO: %s\n", tarefa);
                 break;
             case 5: break;
             default: 
