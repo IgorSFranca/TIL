@@ -34,23 +34,9 @@ recuperadas mesmo após o programa ser encerrado.*/
 #include <stdio.h>
 #include <stdlib.h>
 
-void nov_tarefa(){
-    int i;
-    char tarefa[30];
-    printf("---------------------------------------------\n");
-    printf("             INCLUIR NOVA TAREFA             \n");
-    printf("---------------------------------------------\n");
-    for (i=0;i<=0;i++){
-        printf("Descricao da tarefa: ");
-        scanf("%s", &tarefa[i+1]);
-        printf("Situacao [P=Pendente][C=Concluida]: ");
-        scanf("%s", &tarefa[i+2]);
-    }
-    printf("---------------------------------------------\n");
-}
-
 int main (){
-    int opcao; 
+    int opcao, i; 
+    char tarefa[30];
     printf("=============================================\n");
     printf("            GERENCIADOR DE TAREFAS           \n");
     printf("=============================================\n");
@@ -65,13 +51,33 @@ int main (){
         printf("Digite a opcao: ");
         scanf("%i", &opcao);
         switch (opcao){
-            case 1: nov_tarefa(); break;
+            case 1: 
+                printf("---------------------------------------------\n");
+                printf("             INCLUIR NOVA TAREFA             \n");
+                printf("---------------------------------------------\n");
+                for (i=0;i<=0;i++){
+                    printf("Descricao da tarefa: ");
+                    scanf("%s", &tarefa[i+1]);
+                    printf("Situacao [P=Pendente][C=Concluida]: ");
+                    scanf("%s", &tarefa[i+2]);
+                    }
+                printf("---------------------------------------------\n");
+                break;
             case 2: //exc_tarefa(); break;
             case 3: //con_tarefa(); break;
-            case 4: //vis_tarefa(); break;
+            case 4: 
+                printf("---------------------------------------------\n");
+                printf("             VISUALIZAR TAREFAS              \n");
+                printf("---------------------------------------------\n");
+                for (i=0; i<=sizeof(tarefa);i++){
+                    printf("TAREFA: %s \n", tarefa[i+1]);
+                    printf("SITUACAO: %s \n", tarefa[i+2]);
+                }
+                break;
             case 5: break;
             default: 
                 printf("Opcao invalida!\n");
+                break;
         }
     } while (opcao!=5);
     system ("pause");
