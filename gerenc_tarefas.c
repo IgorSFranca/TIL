@@ -34,6 +34,21 @@ recuperadas mesmo após o programa ser encerrado.*/
 #include <stdio.h>
 #include <stdlib.h>
 
+void nov_tarefa(){
+    int i;
+    char tarefa[30];
+    printf("---------------------------------------------\n");
+    printf("             INCLUIR NOVA TAREFA             \n");
+    printf("---------------------------------------------\n");
+    for (i=0;i<=0;i++){
+        printf("Descricao da tarefa: ");
+        scanf("%s", &tarefa[i+1]);
+        printf("Situacao [P=Pendente][C=Concluida]: ");
+        scanf("%s", &tarefa[i+2]);
+    }
+    printf("---------------------------------------------\n");
+}
+
 int main (){
     int opcao; 
     printf("=============================================\n");
@@ -44,16 +59,16 @@ int main (){
     printf("[2] Excluir Tarefa\n");
     printf("[3] Concluir Tarefa\n");
     printf("[4] Visualizar Tarefas\n");
-    printf("[5+] Encerrar aplicativo\n");
+    printf("[5] Encerrar aplicativo\n");
     printf("=============================================\n");
     do{
-        printf("Opcao escolhida: ");
+        printf("Digite a opcao: ");
         scanf("%i", &opcao);
         switch (opcao){
-            case 1: 
-            case 2:
-            case 3:
-            case 4:
+            case 1: nov_tarefa(); break;
+            case 2: //exc_tarefa(); break;
+            case 3: //con_tarefa(); break;
+            case 4: //vis_tarefa(); break;
             case 5: break;
             default: 
                 printf("Opcao invalida!\n");
