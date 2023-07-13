@@ -56,14 +56,8 @@ int main (){
                 printf("---------------------------------------------\n");
                 printf("             INCLUIR NOVA TAREFA             \n");
                 printf("---------------------------------------------\n");
-                for (i=0;i<=1;i++){
-                    printf("Descricao da tarefa: ");
-                    fgets(tarefa[i+1], sizeof(tarefa), stdin);
-                    tarefa[strcspn(tarefa, "\n")] = '\0';
-                    printf("Situacao [P=Pendente][C=Concluida]: ");
-                    fgets(tarefa[i+2], sizeof(tarefa), stdin);
-                    tarefa[strcspn(tarefa, "\n")] = '\0';
-                }
+                //Fazer dois arrays, onde 1 salva a descrição da tarefa e o outro salva a situação da tarefa. 
+                // Quando for acessar/visualizar as tarefas, é necessário que o For faça a varredura nos dois arrays.
                 printf("---------------------------------------------\n");
                 break;
             case 2: //exc_tarefa(); break;
