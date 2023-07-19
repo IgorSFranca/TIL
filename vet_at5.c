@@ -14,9 +14,13 @@ int main (){
     }
     printf("Informe um numero a ser procurado: ");
     scanf("%i", &num);
-    for (i=0; i<max; i++){
+    for (i=0; i<max; i++){//Verificação dos números
         if (vetor[i] == num){
             printf("O numero %i foi encontrado na posicao %i.\n", num, vetor[i]);
+            break;
+        }
+        else if (vetor[i] >= max){
+            printf("Numero nao encontrado.\n");
             break;
         }
     }
