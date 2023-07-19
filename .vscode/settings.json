@@ -55,5 +55,9 @@
   "files.associations": {
     "stdio.h": "c",
     "stdlib.h": "c"
-  }
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "python.formatting.provider": "none"
 }
