@@ -3,19 +3,27 @@ fazendo a sobreposição de elementos */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 int main (){
-    int i, max = 5, vetor[max], num;
+    int i, max = 5, vetor[max], num, totele = 0;
+    char resp = 's';
     
     //Recebendo os elementos
     for (i=0; i<max; i++){
         printf("Insira o %i elemento: ", i+1);
         scanf("%i", &vetor[i]);
+        printf("Deseja continuar inserindo valores? [s/n] ");
+        scanf("%s", &resp);
+        resp = tolower(resp);
+        if (resp == 'n')
+            break;
+        totele++;
     }
 
     //Mostrando os numeros do vetor antes de retirar o numero escolhido. 
     printf("\nOs numeros informados no vetor foram: ");
-    for (i=0; i<max; i++){
+    for (i=0; i<=totele; i++){
         printf("%i ", vetor[i]);
     }
 
