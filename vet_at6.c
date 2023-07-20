@@ -11,7 +11,11 @@ int main (){
         printf("Insira o %i elemento: ", i+1);
         scanf("%i", &vetor[i]);
     }
-    printf("Informe um numero a ser procurado: ");
+    printf("\nOs numeros informados no vetor foram: ");
+    for (i=0; i<max; i++){//Mostrando os numeros do vetor antes de retirar o numero escolhido. 
+        printf("%i ", vetor[i]);
+    }
+    printf("\nInforme um numero a ser procurado e retirado: ");
     scanf("%i", &num);
     for (i=0; i<max; i++){//Verificação dos números
         if (vetor[i] == num){
@@ -23,6 +27,8 @@ int main (){
             break;
         }
     }
+
+
     system("pause");
     return 0;
 }
