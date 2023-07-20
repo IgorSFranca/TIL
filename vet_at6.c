@@ -6,18 +6,23 @@ fazendo a sobreposição de elementos */
 
 int main (){
     int i, max = 5, vetor[max], num;
-
-    for (i=0; i<max; i++){//Recebendo os elementos
+    
+    //Recebendo os elementos
+    for (i=0; i<max; i++){
         printf("Insira o %i elemento: ", i+1);
         scanf("%i", &vetor[i]);
     }
+
+    //Mostrando os numeros do vetor antes de retirar o numero escolhido. 
     printf("\nOs numeros informados no vetor foram: ");
-    for (i=0; i<max; i++){//Mostrando os numeros do vetor antes de retirar o numero escolhido. 
+    for (i=0; i<max; i++){
         printf("%i ", vetor[i]);
     }
-    printf("\nInforme um numero a ser procurado e retirado: ");
+
+    //Verificação dos números
+    printf("\n\nInforme um numero a ser procurado e retirado: ");
     scanf("%i", &num);
-    for (i=0; i<max; i++){//Verificação dos números
+    for (i=0; i<max; i++){
         if (vetor[i] == num){
             printf("O numero %i foi encontrado na posicao %i.\n", num, vetor[i]);
             break;
@@ -28,6 +33,24 @@ int main (){
         }
     }
 
+    //Retirando o numero escolhido do vetor
+    for (i=0; i<max; i++){
+        if (vetor[i] == num)
+            if (vetor[i] == max)
+                vetor[i] = 0;
+            else
+                vetor[i] = vetor[i]+1;
+        else if (vetor[i] > num && vetor[i] != max)
+            vetor[i] = vetor[i]+1;
+        else if (vetor[i] > num && vetor[i] == max)
+            vetor[i] = 0;
+    }
+
+    //Mostrando os numeros do vetor depois de retirar o numero escolhido. 
+    printf("\nOs numeros remanescentes foram: ");
+    for (i=0; i<max; i++){
+        printf("%i ", vetor[i]);
+    }
 
     system("pause");
     return 0;
