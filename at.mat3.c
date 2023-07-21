@@ -12,6 +12,18 @@ int main (){
             scanf(" %i", &matriz_orig[linha][coluna]);
         }
     }
+    for (i=linha-1; i>=0; i--){
+        for (j=coluna-1; j>=0; j--){
+            matriz_transp[linha][coluna] = matriz_orig[linha][coluna];
+        }
+    }
+    printf("A matriz transposta fica da seguinte maneira: \n");
+    for (i=0; i<linha; i++){
+        printf("\n");
+        for (j=0; j<coluna; j++){
+            printf(" %i ", matriz_transp[linha][coluna]);
+        }
+    }
     system ("pause");
     return 0;
 }
