@@ -17,14 +17,14 @@ int main (){
             matriz_transp[linha][coluna] = matriz_orig[linha][coluna];
         }
     }
-    printf("\nA matriz original eh a seguinte: \n");
+    printf("\nA matriz original eh a seguinte: ");
     for (i=0; i<linha; i++){
         printf("\n");
         for (j=0; j<coluna; j++){
             printf(" %i ", matriz_orig[linha][coluna]);
         }
     }
-    printf("\nA matriz transposta fica da seguinte maneira: \n");
+    printf("\nA matriz transposta fica da seguinte maneira:");
     for (i=0; i<linha; i++){
         printf("\n");
         for (j=0; j<coluna; j++){
