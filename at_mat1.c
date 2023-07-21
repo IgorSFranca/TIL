@@ -24,15 +24,16 @@ int main (){
     int i, j, matriz[3][3], soma; 
     char opcao;
 
-    linha();
-    printf("                     MANIPULACAO DE MATRIZES");
-    linha();
     //Matriz principal
     for (i=0; i<3; i++){
         for (j=0; j<3; j++){
             matriz[i][j] = 2*i+j;
             }
         }//Fim da matriz principal
+        
+        linha();
+        printf("                     MANIPULACAO DE MATRIZES");
+        linha();
     do{
         printf("\nEscolha uma das opcoes abaixo: \n");
         printf("[a] imprimir todos os elementos da matriz.\n");
