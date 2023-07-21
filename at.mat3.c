@@ -9,26 +9,26 @@ int main (){
     for (i=0; i<linha; i++){
         for (j=0; j<coluna; j++){
             printf("Informe o valor para a Linha %i e Coluna %i: ", i+1, j+1);
-            scanf(" %i", &matriz_orig[linha][coluna]);
+            scanf(" %i", &matriz_orig[i][j]);
         }
     }
     for (i=linha-1; i>=0; i--){
         for (j=coluna-1; j>=0; j--){
-            matriz_transp[linha][coluna] = matriz_orig[linha][coluna];
+            matriz_transp[i][j] = matriz_orig[i][j];
         }
     }
     printf("\nA matriz original eh a seguinte: ");
     for (i=0; i<linha; i++){
         printf("\n");
         for (j=0; j<coluna; j++){
-            printf(" %i ", matriz_orig[linha][coluna]);
+            printf(" %i ", matriz_orig[i][j]);
         }
     }
     printf("\nA matriz transposta fica da seguinte maneira:");
     for (i=0; i<linha; i++){
         printf("\n");
         for (j=0; j<coluna; j++){
-            printf(" %i ", matriz_transp[linha][coluna]);
+            printf(" %i ", matriz_transp[i][j]);
         }
     }
     printf("\n");
