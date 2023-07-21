@@ -45,7 +45,8 @@ int main (){
     printf("[1] Visualizar a matriz.\n");
     printf("[2] Visualizar a posicao do menor valor.\n");
     printf("[3] Visualizar a posicao do maior valor.\n");
-    printf("[4] Sair\n");
+    printf("[4] Limpar a tela.\n");
+    printf("[5] Sair\n");
     printf("\n");
     printf("Informe sua opcao: ");
     scanf("%i", &opcao);
@@ -74,11 +75,13 @@ int main (){
             printf("\n");
             break;
         case 4: 
+            system ("cls");
+        case 5: 
             resp = 'n';
             break;
     }
     } while (resp == 's');
-    printf("Programa encerrado.");
+    printf("Programa encerrado.\n");
     system ("pause");
     return 0;
 }
