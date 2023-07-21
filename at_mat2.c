@@ -45,7 +45,7 @@ int main (){
     printf("[1] Visualizar a matriz.\n");
     printf("[2] Visualizar a posicao do menor valor.\n");
     printf("[3] Visualizar a posicao do maior valor.\n");
-    printf("[4] ");
+    printf("[4] Sair\n");
     printf("\n");
     printf("Informe sua opcao: ");
     scanf("%i", &opcao);
@@ -73,8 +73,12 @@ int main (){
             printf("Coluna: %i.", pos_maior[1]+1);
             printf("\n");
             break;
+        case 4: 
+            resp = 'n';
+            break;
     }
     } while (resp == 's');
+    printf("Programa encerrado.");
     system ("pause");
     return 0;
 }
