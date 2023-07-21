@@ -6,25 +6,25 @@ quadrada de tamanho N. Em seguida, guarde em B a matriz transposta de A*/
 
 int main (){
     int linha = 3, coluna = 3, matriz_orig[linha][coluna], matriz_transp[linha][coluna], i, j;
-    for (i=0; i<linha; i++){
+    for (i=0; i<linha; i++){//Recebendo os valores para a matriz original
         for (j=0; j<coluna; j++){
             printf("Informe o valor para a Linha %i e Coluna %i: ", i+1, j+1);
             scanf(" %i", &matriz_orig[i][j]);
         }
     }
-    for (i=linha-1; i>=0; i--){
-        for (j=coluna-1; j>=0; j--){
-            matriz_transp[i][j] = matriz_orig[i][j];
+    for (i=0; i<linha; i++){//Transpondo os valores para a matriz transposta
+        for (j=0; j<coluna; j++){
+            matriz_transp[i][j] = matriz_orig[j][i];
         }
     }
-    printf("\nA matriz original eh a seguinte: ");
+    printf("\nA matriz original eh a seguinte: ");//Mostrando a matriz original
     for (i=0; i<linha; i++){
         printf("\n");
         for (j=0; j<coluna; j++){
             printf(" %i ", matriz_orig[i][j]);
         }
     }
-    printf("\nA matriz transposta fica da seguinte maneira:");
+    printf("\nA matriz transposta fica da seguinte maneira:");//Mostrando a matriz transposta
     for (i=0; i<linha; i++){
         printf("\n");
         for (j=0; j<coluna; j++){
