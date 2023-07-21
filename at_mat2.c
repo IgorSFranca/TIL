@@ -45,6 +45,7 @@ int main (){
     printf("[1] Visualizar a matriz.\n");
     printf("[2] Visualizar a posicao do menor valor.\n");
     printf("[3] Visualizar a posicao do maior valor.\n");
+    printf("[4] ");
     printf("\n");
     printf("Informe sua opcao: ");
     scanf("%i", &opcao);
@@ -64,6 +65,12 @@ int main (){
             printf("A posicao do menor valor eh a seguinte: \n");
             printf("Linha: %i e ", pos_menor[0]+1);
             printf("Coluna: %i.", pos_menor[1]+1);
+            printf("\n");
+            break;
+        case 3:
+            printf("A posicao do maior valor eh a seguinte: \n");
+            printf("Linha: %i e ", pos_maior[0]+1);
+            printf("Coluna: %i.", pos_maior[1]+1);
             printf("\n");
             break;
     }
