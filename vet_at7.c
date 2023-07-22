@@ -30,6 +30,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void imprimir_vetor(int vetor[], int total_elementos, int posicao_valor_procurado){//Função para imprimir os valores atuais do vetor
+    int i;
+    if (posicao_valor_procurado != -1){//Validação para saber se há valores no vetor
+        printf("Valores atuais do Vetor: ");
+        for (i=0; i<total_elementos; i++){//Iteração para imprimir cada valor
+            printf("%i ", vetor[i]);
+         }
+    }
+    else//Resposta para se não houver valores no vetor
+    printf("- O vetor nao possui valores armazenados.\n");
+    printf("\n");
+}
+
 int main (){
     int opcao, max = 5, vetor[max], total_elementos = 0, valor_procurado, i, posicao_valor_procurado = -1;
     do {//Laço de repetição para executar até o usuário digital a opção 5
@@ -39,7 +52,7 @@ int main (){
         printf("[1] Inserir valor\n");
         printf("[2] Pesquisar valor\n");
         printf("[3] Excluir valor\n");
-        printf("[4] Imprimir valor\n");
+        printf("[4] Imprimir valores do vetor\n");
         printf("[5] Sair\n");
         printf("-------------------------\n");
         printf("Informe a opcao: ");
@@ -73,7 +86,11 @@ int main (){
                 else//resposta caso não haja valores salvos no vetor
                     printf("Nao ha valores salvos no vetor.\n");
             case 3:
+                imprimir_vetor(vetor, total_elementos, posicao_valor_procurado);
+                break;
             case 4:
+                imprimir_vetor(vetor, total_elementos, posicao_valor_procurado);
+                break;
             case 5: break;
             default: 
                 printf("Opcao nao encontrada.\n");
