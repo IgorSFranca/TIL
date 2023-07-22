@@ -10,13 +10,22 @@ Remove um elemento do vetor
 4) Imprimir
 Mostra todos os elementos do vetor
 5) Sair
-Encerra o programa*/
+Encerra o programa
+
+A solução deve ser consistente:
+-Não inserir mais de 5 itens (Feito)
+-Não pesquisar, se vetor é vazio
+-Não excluir, se vetor é vazio
+-Não imprimir, se vetor é vazio
+-Antes de excluir, pesquisar o item
+Implemente e teste cada funcionalidade
+antes de implementar as demais*/
 
 #include <stdio.h>
 #include <stdlib.h>
 
 int main (){
-    int opcao;
+    int opcao, max = 5, vetor[max], total_elementos = 0;
     do {
         printf("-------------------------\n");
         printf(" MANIPULACAO DE VETORES \n");
@@ -29,15 +38,24 @@ int main (){
         printf("-------------------------\n");
         printf("Informe a opcao: ");
         scanf("%i", &opcao);
-        switch (opcao)
+        switch (opcao){
             case 1:
+                if (total_elementos < max){
+                    printf("Informe o valor: ");
+                    scanf(" %i", &vetor[total_elementos]);
+                    total_elementos++;
+                }
+                else
+                    printf("Nao ha espaco para arquivamento.\n");
             case 2:
             case 3:
             case 4:
+            case 5: break;
             default: 
                 printf("Opcao nao encontrada.\n");
-
-    } while (opcao == 5);
+                break;
+        }
+    } while (opcao != 5);
     system ("pause");
     return 0;
 }

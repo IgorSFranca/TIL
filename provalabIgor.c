@@ -48,7 +48,7 @@ int main (){
 ************************
 ***** Atividade 02 ***** 
 ************************
-
+*/
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -85,7 +85,7 @@ int main (){
     system ("pause");
     return 0;
 }
-
+/*
 ************************
 ***** Atividade 03 ***** 
 ************************
@@ -131,7 +131,7 @@ int main (){
 ***** Atividade 04 ***** 
 ************************
 
-*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -200,4 +200,4 @@ int main (){
         printf("Quantidade negativa nao aceita.\n");
     system ("pause");
     return 0;
-}
+}*/
