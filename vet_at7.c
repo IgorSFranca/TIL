@@ -16,7 +16,7 @@
             Encerra o programa
 
         A solução deve ser consistente:
-        - Não inserir mais de 5 itens (Feito)
+        - Não inserir mais de 5 itens
         - Não pesquisar, se vetor é vazio
         - Não excluir, se vetor é vazio
         - Não imprimir, se vetor é vazio
@@ -58,16 +58,20 @@ int main (){
             case 2://Opção para procurar um valor no vetor
                 printf("Informe o valor a ser procurado: ");
                 scanf(" %i", &valor_procurado);//Recebe o valor procurado
-                for (i=0; i<max; i++){//Iteração para varrer o vetor procurando o valor
-                    if (valor_procurado == vetor[i]){//Condição para achar o valor
-                        posicao_valor_procurado = i;//Salva a posição que o valor está armazenado 
-                        break;
+                if (total_elementos == -1){//Condição para fazer a busca somente se tiver valores arquivados no vetor
+                    for (i=0; i<max; i++){//Iteração para varrer o vetor procurando o valor
+                        if (valor_procurado == vetor[i]){//Condição para achar o valor
+                            posicao_valor_procurado = i;//Salva a posição que o valor está armazenado 
+                            break;
+                        }
                     }
+                    if (posicao_valor_procurado != -1)//Resposta para quanto achar o valor no vetor
+                        printf("Valor %i encontrado na posicao %i.\n", valor_procurado, posicao_valor_procurado);
+                    else//Resposta para quanto não achar o valor no vetor
+                        printf("Valor %i procurado nao encontrado.\n", valor_procurado);
                 }
-                if (posicao_valor_procurado != -1)//Resposta para quanto achar o valor no vetor
-                    printf("Valor %i encontrado na posicao %i.\n", valor_procurado, posicao_valor_procurado);
-                else//Resposta para quanto não achar o valor no vetor
-                    printf("Valor %i procurado nao encontrado.\n", valor_procurado);
+                else//resposta caso não haja valores salvos no vetor
+                    printf("Nao ha valores salvos no vetor.\n");
             case 3:
             case 4:
             case 5: break;
