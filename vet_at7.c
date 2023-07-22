@@ -38,13 +38,14 @@ void cabecalho(){
     printf("[2] Pesquisar valor\n");
     printf("[3] Excluir valor\n");
     printf("[4] Imprimir valores do vetor\n");
-    printf("[5] Sair\n");
+    printf("[5] Limpeza do monitor\n");
+    printf("[6] Sair\n");
     printf("-------------------------\n");
 }
 
-void imprimir_vetor(int vetor[], int total_elementos, int posicao_valor_procurado){//Função para imprimir os valores atuais do vetor
+void imprimir_vetor(int vetor[], int total_elementos){//Função para imprimir os valores atuais do vetor
     int i;
-    if (posicao_valor_procurado != -1){//Validação para saber se há valores no vetor
+    if (total_elementos != -1){//Validação para saber se há valores no vetor
         printf("Valores atuais do Vetor: ");
         for (i=0; i<total_elementos; i++){//Iteração para imprimir cada valor
             printf("%i ", vetor[i]);
@@ -75,32 +76,41 @@ int main (){
             case 2://Opção para procurar um valor no vetor
                 printf("Informe o valor a ser procurado: ");
                 scanf(" %i", &valor_procurado);//Recebe o valor procurado
-                if (total_elementos == -1){//Condição para fazer a busca somente se tiver valores arquivados no vetor
+                if (total_elementos != -1){//Condição para fazer a busca somente se tiver valores arquivados no vetor
                     for (i=0; i<max; i++){//Iteração para varrer o vetor procurando o valor
                         if (valor_procurado == vetor[i]){//Condição para achar o valor
                             posicao_valor_procurado = i;//Salva a posição que o valor está armazenado 
                             break;
                         }
                     }
-                    if (posicao_valor_procurado != -1)//Resposta para quanto achar o valor no vetor
+                    if (posicao_valor_procurado != -1){//Resposta para quanto achar o valor no vetor
                         printf("Valor %i encontrado na posicao %i.\n", valor_procurado, posicao_valor_procurado);
-                    else//Resposta para quanto não achar o valor no vetor
+                        break;
+                    }
+                    else {//Resposta para quanto não achar o valor no vetor
                         printf("Valor %i procurado nao encontrado.\n", valor_procurado);
+                        break;
+                    }
+
                 }
                 else//resposta caso não haja valores salvos no vetor
                     printf("Nao ha valores salvos no vetor.\n");
+                    break;
             case 3:
-                imprimir_vetor(vetor, total_elementos, posicao_valor_procurado);
+                imprimir_vetor(vetor, total_elementos);
                 break;
             case 4:
-                imprimir_vetor(vetor, total_elementos, posicao_valor_procurado);
+                imprimir_vetor(vetor, total_elementos);
                 break;
-            case 5: break;
+            case 5: 
+                system("cls");
+                break;
+            case 6: break;
             default: 
                 printf("Opcao nao encontrada.\n");
                 break;
         }
-    } while (opcao != 5);
+    } while (opcao != 6);
     system ("pause");
     return 0;
 }
