@@ -12,7 +12,9 @@
             Remove um elemento do vetor
         4) Imprimir
             Mostra todos os elementos do vetor
-        5) Sair
+        5) Limpar Visor
+            Limpa a tela para melhor visualização das opções
+        6) Sair
             Encerra o programa
 
         A solução deve ser consistente:
@@ -27,20 +29,20 @@
  * Data de criação: 22 de julho de 2023
  */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include <stdio.h>//biblioteca padrão
+#include <stdlib.h>//biblioteca padrão
 
 void cabecalho(){
-    printf("-------------------------\n");
-    printf(" MANIPULACAO DE VETORES \n");
-    printf("-------------------------\n");
+    printf("----------------------------------------\n");
+    printf("         MANIPULACAO DE VETORES\n");
+    printf("----------------------------------------\n");
     printf("[1] Inserir valor\n");
     printf("[2] Pesquisar valor\n");
     printf("[3] Excluir valor\n");
     printf("[4] Imprimir valores do vetor\n");
     printf("[5] Limpeza do monitor\n");
     printf("[6] Sair\n");
-    printf("-------------------------\n");
+    printf("----------------------------------------\n");
 }
 
 void imprimir_vetor(int vetor[], int total_elementos){//Função para imprimir os valores atuais do vetor
@@ -97,8 +99,11 @@ int main (){
                     printf("Nao ha valores salvos no vetor.\n");
                     break;
             case 3:
-                imprimir_vetor(vetor, total_elementos);
-                break;
+                if (total_elementos != -1){
+                    imprimir_vetor(vetor, total_elementos);
+                    break;
+
+                }
             case 4:
                 imprimir_vetor(vetor, total_elementos);
                 break;
