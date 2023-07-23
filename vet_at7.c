@@ -123,9 +123,6 @@ int main (){
                 system("cls");
                 break;
             case 6: break;
-            case 7: 
-                printf("Quantidade de elementos: %i\n", total_elementos);
-                break;
             default: 
                 printf("Opcao nao encontrada.\n");
                 break;
