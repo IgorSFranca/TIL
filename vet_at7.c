@@ -79,7 +79,7 @@ int main (){
                 printf("Informe o valor a ser procurado: ");
                 scanf(" %i", &valor_procurado);//Recebe o valor procurado
                 if (total_elementos != -1){//Condição para fazer a busca somente se tiver valores arquivados no vetor
-                    for (i=0; i<max; i++){//Iteração para varrer o vetor procurando o valor
+                    for (i=0; i<total_elementos; i++){//Iteração para varrer o vetor procurando o valor
                         if (valor_procurado == vetor[i]){//Condição para achar o valor
                             posicao_valor_procurado = i;//Salva a posição que o valor está armazenado 
                             break;
@@ -87,6 +87,7 @@ int main (){
                     }
                     if (posicao_valor_procurado != -1){//Resposta para quanto achar o valor no vetor
                         printf("Valor %i encontrado na posicao %i.\n", valor_procurado, posicao_valor_procurado);
+                        posicao_valor_procurado = -1;
                         break;
                     }
                     else {//Resposta para quanto não achar o valor no vetor
@@ -99,11 +100,21 @@ int main (){
                     printf("Nao ha valores salvos no vetor.\n");
                     break;
             case 3:
-                if (total_elementos != -1){
-                    imprimir_vetor(vetor, total_elementos);
+                if (total_elementos != -1){//Verificação se há valores armazenados no vetor
+                    imprimir_vetor(vetor, total_elementos);//Imprimindo o vetor antes de excluir o elemento
+                    printf("Informe qual valor deseja excluir: ");
+                    scanf(" %i", &valor_procurado);//Recebendo o valor a ser excluído
+                    for (i=0; i<total_elementos; i++){//Iteração para encontrar o valor procurado
+                        if (vetor[i] == valor_procurado){//Encontro do valor
+                            vetor[i] = vetor[i+1];//Substituição do valor para o valor subsequente
+                            total_elementos--;//Diminuição da quantidade de elementos salvos (controle de elementos)
+                        }
+                    }
+                    imprimir_vetor(vetor, total_elementos);//imprimindo o vetor após a exclusão
                     break;
-
                 }
+                else//Resposta caso não haja valores armazenados no vetor
+                    printf("Nao existem valores armazenados no vetor.");
             case 4:
                 imprimir_vetor(vetor, total_elementos);
                 break;
@@ -111,6 +122,9 @@ int main (){
                 system("cls");
                 break;
             case 6: break;
+            case 7: 
+                printf("Quantidade de elementos: %i\n", total_elementos);
+                break;
             default: 
                 printf("Opcao nao encontrada.\n");
                 break;
