@@ -47,7 +47,7 @@ void cabecalho(){
 
 void imprimir_vetor(int vetor[], int total_elementos){//Função para imprimir os valores atuais do vetor
     int i;
-    if (total_elementos != -1){//Validação para saber se há valores no vetor
+    if (total_elementos != 0){//Validação para saber se há valores no vetor
         printf("Valores atuais do Vetor: ");
         for (i=0; i<total_elementos; i++){//Iteração para imprimir cada valor
             printf("%i ", vetor[i]);
@@ -76,9 +76,9 @@ int main (){
                     printf("Nao ha espaco para arquivamento.\n");
                     break;
             case 2://Opção para procurar um valor no vetor
+                if (total_elementos != 0){//Condição para fazer a busca somente se tiver valores arquivados no vetor
                 printf("Informe o valor a ser procurado: ");
                 scanf(" %i", &valor_procurado);//Recebe o valor procurado
-                if (total_elementos != -1){//Condição para fazer a busca somente se tiver valores arquivados no vetor
                     for (i=0; i<total_elementos; i++){//Iteração para varrer o vetor procurando o valor
                         if (valor_procurado == vetor[i]){//Condição para achar o valor
                             posicao_valor_procurado = i;//Salva a posição que o valor está armazenado 
@@ -99,22 +99,23 @@ int main (){
                 else//resposta caso não haja valores salvos no vetor
                     printf("Nao ha valores salvos no vetor.\n");
                     break;
-            case 3:
-                if (total_elementos != -1){//Verificação se há valores armazenados no vetor
+            case 3://Opção para excluir valor
+                if (total_elementos != 0){//Verificação se há valores armazenados no vetor
                     imprimir_vetor(vetor, total_elementos);//Imprimindo o vetor antes de excluir o elemento
                     printf("Informe qual valor deseja excluir: ");
                     scanf(" %i", &valor_procurado);//Recebendo o valor a ser excluído
-                    for (i=0; i<total_elementos; i++){//Iteração para encontrar o valor procurado
-                        if (vetor[i] == valor_procurado){//Encontro do valor
-                            vetor[i] = vetor[i+1];//Substituição do valor para o valor subsequente
-                            total_elementos--;//Diminuição da quantidade de elementos salvos (controle de elementos)
+                    for (i=0; i<total_elementos; i++){//Iteração para varrer o vetor procurando o valor
+                        if (valor_procurado == vetor[i]){//Condição para achar o valor
+                            posicao_valor_procurado = i;//Salva a posição que o valor está armazenado 
                         }
                     }
-                    imprimir_vetor(vetor, total_elementos);//imprimindo o vetor após a exclusão
-                    break;
+                    for (i=posicao_valor_procurado; i<=total_elementos; i++){//Iteração começando do valor que deseja excluir até o final do vetor
+                        vetor[i] = vetor[i+1];//Substituição do valor para o valor subsequente
+                        }
+                    total_elementos--;//Diminuição da quantidade de elementos salvos (controle de elementos)
                 }
-                else//Resposta caso não haja valores armazenados no vetor
-                    printf("Nao existem valores armazenados no vetor.");
+                imprimir_vetor(vetor, total_elementos);//imprimindo o vetor após a exclusão
+                break;
             case 4:
                 imprimir_vetor(vetor, total_elementos);
                 break;
