@@ -10,6 +10,7 @@ float media(float, float);
 
 int main (){
     float n1, n2;
+    printf("Informe a n1: ");
     scanf("%f", &n1);
     printf("Informe a n2: ");
     scanf("%f", &n2);
