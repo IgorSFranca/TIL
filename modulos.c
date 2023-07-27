@@ -74,7 +74,7 @@ void dividir (float x, float y){
     printf("%.2f / %.2f = %.2f\n", x, y, (x/y));
 }
 
-FUNÇÃO SEM PASSAGEM DE PARÂMETROS*/
+FUNÇÃO SEM PASSAGEM DE PARÂMETROS
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -114,4 +114,37 @@ float multiplicar(){
 float dividir(){
     float n1 = 2, n2 = 5;
     return n1/n2;
+}
+
+FUNÇÃO COM PASSAGEM DE PARÂMETROS*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+float somar(float, float), subtrair (float, float), multiplicar(float, float), dividir (float, float);
+
+int main (){
+    float n1 = 2, n2 = 5;
+    printf("%.2f + %.2f = %.2f\n", n1, n2, somar(n1, n2));
+    printf("%.2f - %.2f = %.2f\n", n1, n2, subtrair(n1, n2));
+    printf("%.2f * %.2f = %.2f\n", n1, n2, multiplicar(n1, n2));
+    printf("%.2f / %.2f = %.2f\n", n1, n2, dividir(n1, n2));
+    system ("pause");
+    return 0;
+}
+
+float somar (float x, float y){
+    return (x+y);
+}
+
+float subtrair (float x, float y){
+    return (x-y);
+}
+
+float multiplicar (float x, float y){
+    return (x*y);
+}
+
+float dividir (float x, float y){
+    return (x / y);
 }
