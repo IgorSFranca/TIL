@@ -45,14 +45,29 @@ PROCEDIMENTO COM PASSAGEM DE PARÂMETROS*/
 
 #include <stdio.h>
 
-void somar(float, float);
+void somar(float, float), subtrair(float, float), multiplicar(float, float), dividir(float, float);
 
 int main (){
     float n1 = 2, n2 = 5;
     somar(n1, n2);
+    subtrair(n1, n2);
+    multiplicar(n1, n2);
+    dividir(n1, n2);
     return 0;
 }
 
 void somar (float x, float y){
     printf("%.2f + %.2f = %.2f\n", x, y, (x+y));
+}
+
+void subtrair (float x, float y){
+    printf("%.2f - %.2f = %.2f\n", x, y, (x-y));
+}
+
+void multiplicar (float x, float y){
+    printf("%.2f * %.2f = %.2f\n", x, y, (x*y));
+}
+
+void dividir (float x, float y){
+    printf("%.2f / %.2f = %.2f\n", x, y, (x/y));
 }
