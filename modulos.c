@@ -116,7 +116,7 @@ float dividir(){
     return n1/n2;
 }
 
-FUNÇÃO COM PASSAGEM DE PARÂMETROS*/
+FUNÇÃO COM PASSAGEM DE PARÂMETROS
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -147,4 +147,4 @@ float multiplicar (float x, float y){
 
 float dividir (float x, float y){
     return (x / y);
-}
+}*/
