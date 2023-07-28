@@ -18,7 +18,7 @@ depositar ou pagar valor menor ou igual a zero.*/
 
 void cabecalho(), saldo(float);
 
-float sacar(float), pagamento(float);
+float sacar(float), pagamento(float), deposito(float);
 
 int main (){
     char resp = 's';
@@ -43,16 +43,24 @@ int main (){
                 saldo_atual = pagamento(saldo_atual);
                 break;
             case 4://Depósito
+                saldo(saldo_atual);
+                saldo_atual = deposito(saldo_atual);
             case 0://Sair
+                resp = 'n';
                 printf("Programa encerrado.\n");
                 break;
             default: 
                 printf("Opcao nao encontrada.\n");
                 break;
         }
-        printf("Continuar [s/n]: ");
-        scanf(" %c", &resp);
-        resp = tolower(resp);
+        if (opcao == 0)
+            break;
+        else{
+            printf("\n");
+            printf("Continuar [s/n]: ");
+            scanf(" %c", &resp);
+            resp = tolower(resp);
+        }
     } while (opcao != 0 && resp != 'n');
     return 0;
 }
@@ -83,15 +91,16 @@ float sacar(float saldo){
     scanf("%f", &valor);
     if (valor <= 0){
         printf("Valor invalido para esta operacao.\n");
+        printf("Operacao nao realizada.\n");
         return saldo;
     }
     if (valor > saldo){
         printf("Saldo insuficiente.\n");
+        printf("Operacao nao realizada.\n");
         return saldo;
     }
     else{
-        printf("-> Operacao realizada.\n");
-        printf("\n");
+        printf("Operacao realizada com sucesso.\n");
         return (saldo-valor);
     }
 }
@@ -100,6 +109,7 @@ float pagamento(float saldo){
     float valor_pagamento;
     if (saldo <= 0){
         printf("Saldo insuficiente para realizar pagamentos.\n");
+        printf("Operacao nao realizada.\n");
         return saldo;
     }
     else{
@@ -107,16 +117,34 @@ float pagamento(float saldo){
         scanf("%f", &valor_pagamento);
         if (saldo < valor_pagamento){
             printf("Saldo insuficiente para realizar este pagamento.\n");
+            printf("Operacao nao realizada.\n");
             return saldo;
         }
         if (valor_pagamento < 0){
             printf("Valor invalido para esta operacao.\n");
+            printf("Operacao nao realizada.\n");
             return saldo;
         }
-        else 
+        else {
+            printf("Operacao realizada com sucesso.\n");
             return (saldo-valor_pagamento);
+        }
     }
 }
+
+float deposito(float saldo){
+    float valor_deposito;
+
+}
+
+
+
+
+
+
+
+
+
 
 
 
