@@ -16,7 +16,9 @@ depositar ou pagar valor menor ou igual a zero.*/
 #include <stdlib.h>
 #include <ctype.h>
 
-void cabecalho();
+void cabecalho(), saldo(float);
+
+float sacar(float), pagamento(float);
 
 int main (){
     int opcao;
@@ -27,13 +29,19 @@ int main (){
         printf("Informe a opcao: ");
         scanf("%i", &opcao);
         switch (opcao){
-            case 1: //Opção para mostrar o saldo atual
-                printf("Saldo atual: %.2f\n", saldo_atual);
+            case 1: //Mostrar o saldo
+                saldo(saldo_atual);
                 break;
-            case 2://Opção para sacar
-            case 3://Opção para pagamento
-            case 4://Opção para depósito
-            case 0://Opção para sair
+            case 2://Sacar
+                saldo(saldo_atual);
+                saldo_atual = sacar(saldo_atual);
+                break;
+            case 3://Pagamento
+                saldo(saldo_atual);
+                saldo_atual = pagamento(saldo_atual);
+                break;
+            case 4://Depósito
+            case 0://Sair
                 printf("Programa encerrado.\n");
                 break;
             default: 
@@ -41,7 +49,6 @@ int main (){
                 break;
         }
     } while (opcao != 0);
-    system ("pause");
     return 0;
 }
 
@@ -59,4 +66,36 @@ void cabecalho(){
     printf("+ [0] SAIR                   +\n");
     printf("++++++++++++++++++++++++++++++\n\n");
 }
+
+void saldo(float saldo){
+    printf("Saldo disponivel: %.2f\n", saldo);
+    printf("\n");
+}
+
+float sacar(float saldo){
+    float valor;
+    printf("\n");
+    printf("Informe o valor que deseja sacar: R$ ");
+    scanf("%f", &valor);
+    printf("-> Operacao realizada.\n");
+    printf("\n");
+    return (saldo-valor);
+}
+
+float pagamento(float saldo){
+    float valor_pagamento;
+    printf("\n");
+    if (saldo <= 0)
+        printf("Saldo insuficiente para realizar pagamentos.\n");
+    else{
+        printf("Informe o valor que deseja fazer pagamento: R$ ");
+        scanf("%f", &valor_pagamento);
+        if (valor_pagamento > saldo)
+            printf("Saldo insuficiente para realizar este pagamento.\n");
+        else 
+            return (saldo-valor_pagamento);
+    }
+}
+
+
 
