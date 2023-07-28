@@ -98,13 +98,19 @@ float sacar(float saldo){
 
 float pagamento(float saldo){
     float valor_pagamento;
-    if (saldo <= 0)
+    if (saldo <= 0){
         printf("Saldo insuficiente para realizar pagamentos.\n");
+        return saldo;
+    }
     else{
         printf("Informe o valor que deseja fazer pagamento: R$ ");
         scanf("%f", &valor_pagamento);
         if (saldo < valor_pagamento){
             printf("Saldo insuficiente para realizar este pagamento.\n");
+            return saldo;
+        }
+        if (valor_pagamento < 0){
+            printf("Valor invalido para esta operacao.\n");
             return saldo;
         }
         else 
