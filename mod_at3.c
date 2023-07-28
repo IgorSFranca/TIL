@@ -45,6 +45,7 @@ int main (){
             case 4://Depósito
                 saldo(saldo_atual);
                 saldo_atual = deposito(saldo_atual);
+                break;
             case 0://Sair
                 resp = 'n';
                 printf("Programa encerrado.\n");
@@ -134,6 +135,17 @@ float pagamento(float saldo){
 
 float deposito(float saldo){
     float valor_deposito;
+    printf("Informe o valor a ser depositado: ");
+    scanf("%f", &valor_deposito);
+    if (valor_deposito <= 0){
+        printf("Valor invalido para esta operacao.\n");
+        printf("Operacao nao realizada.\n");
+        return saldo;
+    }
+    else {
+        printf("Operacao realizada com sucesso.\n");
+        return (saldo+valor_deposito);
+    }
 
 }
 
