@@ -21,10 +21,12 @@ void cabecalho(), saldo(float);
 float sacar(float), pagamento(float);
 
 int main (){
+    char resp = 's';
     int opcao;
     float saldo_atual = 1500;
 
     do{
+        system ("cls");
         cabecalho();
         printf("Informe a opcao: ");
         scanf("%i", &opcao);
@@ -48,7 +50,10 @@ int main (){
                 printf("Opcao nao encontrada.\n");
                 break;
         }
-    } while (opcao != 0);
+        printf("Continuar [s/n]: ");
+        scanf(" %c", &resp);
+        resp = tolower(resp);
+    } while (opcao != 0 && resp != 'n');
     return 0;
 }
 
@@ -74,7 +79,6 @@ void saldo(float saldo){
 
 float sacar(float saldo){
     float valor;
-    printf("\n");
     printf("Informe o valor que deseja sacar: R$ ");
     scanf("%f", &valor);
     printf("-> Operacao realizada.\n");
@@ -84,14 +88,15 @@ float sacar(float saldo){
 
 float pagamento(float saldo){
     float valor_pagamento;
-    printf("\n");
     if (saldo <= 0)
         printf("Saldo insuficiente para realizar pagamentos.\n");
     else{
         printf("Informe o valor que deseja fazer pagamento: R$ ");
         scanf("%f", &valor_pagamento);
-        if (valor_pagamento > saldo)
+        if (saldo < valor_pagamento){
             printf("Saldo insuficiente para realizar este pagamento.\n");
+            return saldo;
+        }
         else 
             return (saldo-valor_pagamento);
     }
