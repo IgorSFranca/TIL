@@ -18,21 +18,24 @@ Para esta tarefa, declare o vetor na função main()
 #include <stdlib.h>
 #include <ctype.h>
 
-void duplicar(), imprimir(), remover(), criar(), cabecalho();
+void duplicar(int vetor[10]), imprimir(int vetor[10]), remover(), criar(int vetor[10]), cabecalho();
 char opcao(char);
 
 int main (){
     char escolha;
+    int vetor[10];
+    criar(vetor);
 
     cabecalho();
-    escolha = opcao(escolha);
-
-    switch (escolha){
-        case 'd': break;
-        case 'i': break;
-        case 'r': break;
-        case 's': break;
-    } 
+    do{
+        escolha = opcao(escolha);
+        switch (escolha){
+            case 'd': duplicar(vetor); imprimir(vetor); break;
+            case 'i': imprimir(vetor); break;
+            case 'r': break;
+            case 's': break;
+        } 
+    } while (escolha != 's');
     system ("pause");
     return 0;
 }
@@ -43,14 +46,33 @@ void cabecalho (){
     printf("| [D]uplicar os elementos do vetor  |\n");
     printf("| [I]mprimir os elementos do vetor  |\n");
     printf("| [R]emover um elemento do vetor    |\n");
+    printf("| [C]riar um vetor de 4 posicoes    |\n");
     printf("| [S]air                            |\n");
     printf("-------------------------------------\n");
 }
 
-void duplicar(){}
-void imprimir(){}
+void duplicar(int vetor[]){
+    int i; 
+    for (i=0; i<10; i++)
+        vetor[i] = 2*(vetor[i]);
+}
+
+void imprimir(int vetor[10]){
+    int i;
+    for (i=0; i<10; i++){
+        printf("%i ", vetor[i]);
+    }
+    printf("\n");
+}
+
 void remover(){}
-void criar(){}
+
+void criar(int vetor[10]){
+    int i;
+    for (i=0; i<10; i++){
+        vetor[i] = i;
+    }
+}
 
 char opcao (char opcao){
     do{
