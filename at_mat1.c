@@ -16,21 +16,14 @@ Use a estrutura switch-case para a seleção da opção*/
 #include <stdlib.h>
 #include <ctype.h>
 
-void linha(){
-    printf("\n--------------------------------------------------------------------\n");
-}
+void linha(), escrever_matriz(int matriz[3][3]), imprimir_matriz(int matriz[3][3]);
 
 int main (){
     int i, j, matriz[3][3], soma; 
     char opcao;
 
-    //Matriz principal
-    for (i=0; i<3; i++){
-        for (j=0; j<3; j++){
-            matriz[i][j] = 2*i+j;
-            }
-        }//Fim da matriz principal
-        
+    escrever_matriz(matriz);
+
         linha();
         printf("                     MANIPULACAO DE MATRIZES");
         linha();
@@ -51,12 +44,7 @@ int main (){
             case 'a':
                 linha();
                 printf("Opcao escolhida: imprimir todos os elementos da matriz.");
-                for (i=0; i<3; i++){
-                    printf("\n");
-                    for (j=0; j<3; j++){
-                        printf("%d ", matriz[i][j]);
-                    }
-                }
+                imprimir_matriz(matriz);
                 linha();
                 break;
             case 'b':
@@ -136,6 +124,28 @@ int main (){
         }
     }while (opcao!='h');
     printf("\n");
-    system ("pause");
     return 0; 
+}
+
+void linha(){
+    printf("\n--------------------------------------------------------------------\n");
+}
+
+void escrever_matriz(int matriz[3][3]){
+    int i, j;
+    for (i=0; i<3; i++){
+        for (j=0; j<3; j++){
+            matriz[i][j] = 2*i+j;
+            }
+        }
+}
+
+void imprimir_matriz(int matriz[3][3]){
+    int i, j;
+    for (i=0; i<3; i++){
+        printf("\n");
+        for (j=0; j<3; j++){
+            printf("%d ", matriz[i][j]);
+        }
+    }
 }
