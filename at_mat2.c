@@ -15,7 +15,7 @@ int main (){
     char resp = 's';
 
     criar_matriz(matriz);
-    
+
     for (i=0; i<linha; i++){
         for (j=0; j<coluna; j++){
             if (i==0 && j==0){
@@ -85,7 +85,7 @@ int main (){
     return 0;
 }
 
-void criar_matriz(int matriz[3][3]){
+void criar_matriz(int matriz [3][3]){
     int i, j, linha = 3, coluna = 3;
     for (i=0; i<linha; i++){
         for (j=0; j<coluna; j++){
