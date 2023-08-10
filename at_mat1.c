@@ -16,7 +16,7 @@ Use a estrutura switch-case para a seleção da opção*/
 #include <stdlib.h>
 #include <ctype.h>
 
-void cabecalho(), linha(), opcoes(), escrever_matriz(int matriz[3][3]), imprimir_matriz(int matriz[3][3]), somar_matriz(int matriz[3][3]);
+void cabecalho(), linha(), opcoes(), escrever_matriz(int matriz[3][3]), imprimir_matriz(int matriz[3][3]), somar_linha(int matriz[3][3]), somar_coluna(int matriz[3][3]);
 
 int main (){
     int i, j, matriz[3][3], soma; 
@@ -39,19 +39,13 @@ int main (){
             case 'b':
                 linha();
                 printf("Opcao escolhida: somar os elementos de cada linha e mostrar o resultado.\n");
-                somar_matriz(matriz);
+                somar_linha(matriz);
                 linha();
                 break;
             case 'c':
                 linha();
                 printf("Opcao escolhida: somar os elementos de cada coluna e mostrar o resultado\n");
-                for (i=0; i<3; i++){
-                    soma = 0;
-                    for (j=0; j<3; j++){
-                        soma = soma+matriz[j][i];
-                    }
-                    printf("A soma da coluna %i eh: %i\n", i, soma);
-                }
+                somar_coluna(matriz);
                 linha();
                 break;
             case 'd':
@@ -153,7 +147,7 @@ void imprimir_matriz(int matriz[3][3]){
     }
 }
 
-void somar_matriz(int matriz[3][3]){
+void somar_linha(int matriz[3][3]){
     int i, j, soma;
         for (i=0; i<3; i++){
         soma = 0;
@@ -161,5 +155,16 @@ void somar_matriz(int matriz[3][3]){
             soma = soma+matriz[i][j];
         }
         printf("A soma da linha %i eh: %i.\n", i+1, soma);
+    }
+}
+
+void somar_coluna(int matriz[3][3]){
+    int i, j, soma;
+    for (i=0; i<3; i++){
+        soma = 0;
+        for (j=0; j<3; j++){
+            soma = soma+matriz[j][i];
+        }
+        printf("A soma da coluna %i eh: %i\n", i+1, soma);
     }
 }
