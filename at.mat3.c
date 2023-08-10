@@ -4,17 +4,13 @@ quadrada de tamanho N. Em seguida, guarde em B a matriz transposta de A*/
 #include <stdio.h>
 #include <stdlib.h>
 
-void criar_matriz(int matriz[3][3]), visualizar_original(int matriz[3][3]), transpor_matriz(int matriz[3][3]), visualizar_transposta(int matriz[3][3]);
+void criar_matriz(int matriz[3][3]), visualizar_original(int matriz[3][3]), transpor_matriz(int matriz[3][3], int matriz_transp[3][3]), visualizar_transposta(int matriz[3][3]);
 
 int main (){
     int linha = 3, coluna = 3, matriz_orig[linha][coluna], matriz_transp[linha][coluna], i, j;
     criar_matriz(matriz_orig);
+    transpor_matriz(matriz_orig, matriz_transp);
 
-    for (i=0; i<linha; i++){//Transpondo os valores para a matriz transposta
-        for (j=0; j<coluna; j++){
-            matriz_transp[i][j] = matriz_orig[j][i];
-        }
-    }
     printf("\nA matriz original eh a seguinte: ");//Mostrando a matriz original
     for (i=0; i<linha; i++){
         printf("\n");
@@ -43,5 +39,14 @@ void criar_matriz(int matriz_orig[3][3]){
     }
 } 
 void visualizar_original(int matriz[3][3]){} 
-void transpor_matriz(int matriz[3][3]){} 
+
+void transpor_matriz(int matriz_orig[3][3], int matriz_transp[3][3]){
+    int i, linha = 3, j, coluna = 3;
+    for (i=0; i<linha; i++){//Transpondo os valores para a matriz transposta
+        for (j=0; j<coluna; j++){
+            matriz_transp[i][j] = matriz_orig[j][i];
+        }
+    }
+} 
+
 void visualizar_transposta(int matriz[3][3]){}
