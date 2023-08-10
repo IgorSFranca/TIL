@@ -8,16 +8,14 @@ elementos*/
 #include <stdlib.h>
 #include <ctype.h>
 
+void criar_matriz(int matriz[3][3]);
+
 int main (){
     int linha = 3, coluna = 3, matriz[linha][coluna], i, j, menor, maior, pos_maior[2] = {0}, pos_menor[2] = {0}, opcao;
     char resp = 's';
 
-    for (i=0; i<linha; i++){
-        for (j=0; j<coluna; j++){
-            printf("Insira um valor para a posicao Linha %i x Coluna %i: ", i+1, j+1);
-            scanf("%i", &matriz[i][j]);
-        }
-    }
+    criar_matriz(matriz);
+    
     for (i=0; i<linha; i++){
         for (j=0; j<coluna; j++){
             if (i==0 && j==0){
@@ -85,4 +83,14 @@ int main (){
     printf("Programa encerrado.\n");
     system ("pause");
     return 0;
+}
+
+void criar_matriz(int matriz[3][3]){
+    int i, j, linha = 3, coluna = 3;
+    for (i=0; i<linha; i++){
+        for (j=0; j<coluna; j++){
+            printf("Insira um valor para a posicao Linha %i x Coluna %i: ", i+1, j+1);
+            scanf("%i", &matriz[i][j]);
+        }
+    }
 }
