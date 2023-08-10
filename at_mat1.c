@@ -17,7 +17,7 @@ Use a estrutura switch-case para a seleção da opção*/
 #include <ctype.h>
 
 void cabecalho(), linha(), opcoes(), escrever_matriz(int matriz[3][3]), imprimir_matriz(int matriz[3][3]), somar_linha(int matriz[3][3]), somar_coluna(int matriz[3][3]);
-void imprimir_diagonal_principal(int matriz[3][3]);
+void imprimir_diagonal_principal(int matriz[3][3]), imprimir_elementos_sem_diagonal_princ(int matriz[3][3]);
 
 int main (){
     int i, j, matriz[3][3], soma; 
@@ -58,13 +58,7 @@ int main (){
             case 'e':
                 linha();
                 printf("Opcao escolhida: imprimir todos os elementos, exceto os da diagonal principal\n");
-                for (i=0; i<3; i++){
-                    printf("\n");
-                    for (j=0; j<3; j++){
-                        if (i != j)
-                            printf("%i ", matriz[i][j]);
-                    }
-                }
+                imprimir_elementos_sem_diagonal_princ(matriz);
                 linha();
                 break;
             case 'f':
@@ -173,4 +167,15 @@ void imprimir_diagonal_princial(int matriz[3][3]){
     int i, j;
     for (i=0; i<3; i++)
     printf("%i ", matriz[i][i]);
+}
+
+void imprimir_elementos_sem_diagonal_princ(int matriz[3][3]){
+    int i, j;
+    for (i=0; i<3; i++){
+    printf("\n");
+    for (j=0; j<3; j++){
+        if (i != j)
+            printf("%i ", matriz[i][j]);
+    }
+}
 }
