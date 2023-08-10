@@ -1,19 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void cabecalho(float saldo);
+
 int main (){
     float saldo = 0, valor; 
     int option;
-    printf("=============================================\n");
-    printf("               EXTRATO BANCARIO              \n");
-    printf("=============================================\n");
-    printf("            Operacoes disponiveis            \n");
-    printf("[10] Saque em dinheiro                       \n");
-    printf("[33] Deposito                                \n");
-    printf("[ 4] Pagamento de Cheque                     \n");
-    printf("[ 0] Para encerrar                           \n");
-    printf("---------------------------------------------\n");
-    printf("Saldo inicial ....................... R$ %.2f\n\n", saldo);
+    cabecalho(saldo);
     do {
         printf("Codigo da operacao: ");
         scanf("%i", &option);
@@ -47,4 +40,18 @@ int main (){
     printf("Programa encerrado\n");
     system ("pause");
     return 0;
+}
+
+void cabecalho(float saldo){
+    printf("=============================================\n");
+    printf("               EXTRATO BANCARIO              \n");
+    printf("=============================================\n");
+    printf("            Operacoes disponiveis            \n");
+    printf("[10] Saque em dinheiro                       \n");
+    printf("[33] Deposito                                \n");
+    printf("[ 4] Pagamento de Cheque                     \n");
+    printf("[ 0] Para encerrar                           \n");
+    printf("---------------------------------------------\n");
+    printf("Saldo inicial ....................... R$ %.2f\n\n", saldo);
+
 }
