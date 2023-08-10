@@ -8,7 +8,7 @@ elementos*/
 #include <stdlib.h>
 #include <ctype.h>
 
-void criar_matriz(int matriz[3][3]);
+void criar_matriz(int matriz[3][3]), visualizar_matriz(int matriz[3][3]);
 
 int main (){
     int linha = 3, coluna = 3, matriz[linha][coluna], i, j, menor, maior, pos_maior[2] = {0}, pos_menor[2] = {0}, opcao;
@@ -50,15 +50,7 @@ int main (){
     scanf("%i", &opcao);
     switch (opcao){
         case 1: 
-            printf("A matriz inserida foi: ");
-            for (i=0; i<linha; i++){
-                printf("\n");
-                for (j=0; j<coluna; j++){
-                    printf("%i ", matriz[i][j]);
-                }
-
-            }
-            printf("\n");
+            visualizar_matriz(matriz);
             break;
         case 2:
             printf("A posicao do menor valor eh a seguinte: \n");
@@ -93,4 +85,16 @@ void criar_matriz(int matriz [3][3]){
             scanf("%i", &matriz[i][j]);
         }
     }
+}
+
+void visualizar_matriz(int matriz[3][3]){
+    int i, linha = 3, j, coluna = 3;
+    printf("A matriz inserida foi: ");
+    for (i=0; i<linha; i++){
+        printf("\n");
+        for (j=0; j<coluna; j++){
+            printf("%i ", matriz[i][j]);
+        }
+    }
+    printf("\n");
 }
