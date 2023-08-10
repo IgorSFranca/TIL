@@ -16,24 +16,16 @@ Use a estrutura switch-case para a seleção da opção*/
 #include <stdlib.h>
 #include <ctype.h>
 
-void cabecalho(), linha(), escrever_matriz(int matriz[3][3]), imprimir_matriz(int matriz[3][3]);
+void cabecalho(), linha(), opcoes(), escrever_matriz(int matriz[3][3]), imprimir_matriz(int matriz[3][3]);
 
 int main (){
     int i, j, matriz[3][3], soma; 
     char opcao;
 
     escrever_matriz(matriz);
-        cabecalho();
+    cabecalho();
     do{
-        printf("\nEscolha uma das opcoes abaixo: \n");
-        printf("[a] imprimir todos os elementos da matriz.\n");
-        printf("[b] somar os elementos de cada linha e mostrar o resultado\n");
-        printf("[c] somar os elementos de cada coluna e mostrar o resultado\n");
-        printf("[d] imprimir os elementos da diagonal principal\n");
-        printf("[e] imprimir todos os elementos, exceto os da diagonal principal\n");
-        printf("[f] imprimir os elementos, tal que a linha eh par e a coluna eh impar\n");
-        printf("[g] imprimir os elementos da coluna 0, apenas\n");
-        printf("[h] para encerrar.\n");
+        opcoes();
         printf("Digite sua escolha: ");
         scanf("%s", &opcao);
         opcao = tolower(opcao);
@@ -134,6 +126,18 @@ void cabecalho(){
 
 void linha(){
     printf("\n--------------------------------------------------------------------\n");
+}
+
+void opcoes(){
+    printf("\nEscolha uma das opcoes abaixo: \n");
+    printf("[a] imprimir todos os elementos da matriz.\n");
+    printf("[b] somar os elementos de cada linha e mostrar o resultado\n");
+    printf("[c] somar os elementos de cada coluna e mostrar o resultado\n");
+    printf("[d] imprimir os elementos da diagonal principal\n");
+    printf("[e] imprimir todos os elementos, exceto os da diagonal principal\n");
+    printf("[f] imprimir os elementos, tal que a linha eh par e a coluna eh impar\n");
+    printf("[g] imprimir os elementos da coluna 0, apenas\n");
+    printf("[h] para encerrar.\n");
 }
 
 void escrever_matriz(int matriz[3][3]){
