@@ -17,7 +17,7 @@ Use a estrutura switch-case para a seleção da opção*/
 #include <ctype.h>
 
 void cabecalho(), linha(), opcoes(), escrever_matriz(int matriz[3][3]), imprimir_matriz(int matriz[3][3]), somar_linha(int matriz[3][3]), somar_coluna(int matriz[3][3]);
-void imprimir_diagonal_principal(int matriz[3][3]), imprimir_elementos_sem_diagonal_princ(int matriz[3][3]);
+void imprimir_diagonal_principal(int matriz[3][3]), imprimir_elementos_sem_diagonal_princ(int matriz[3][3]), imprimir_linha_par_coluna_impar(int matriz[3][3]);
 
 int main (){
     int i, j, matriz[3][3], soma; 
@@ -64,15 +64,7 @@ int main (){
             case 'f':
                 linha();
                 printf("Opcao escolhida: imprimir os elementos, tal que a linha eh par e a coluna eh impar\n");
-                for (i=0; i<3; i++){
-                    printf("\n");
-                    for (j=0; j<3; j++){
-                        if (i%2 == 0 && j%2 == 0)
-                            printf("%i ", matriz[i][j]);
-                        else
-                            printf("x ");
-                    }
-                }
+                imprimir_linha_par_coluna_impar(matriz);
                 linha();
                 break;   
             case 'g':
@@ -179,3 +171,17 @@ void imprimir_elementos_sem_diagonal_princ(int matriz[3][3]){
     }
 }
 }
+
+void imprimir_linha_par_coluna_impar(int matriz[3][3]){
+    int linha, coluna;
+    for (linha=1; linha<4; linha++){
+    printf("\n");
+    for (coluna=1; coluna<4; coluna++){
+        if (linha%2 == 0 || coluna%2 != 0)
+            printf("%i ", matriz[linha][coluna]);
+        else
+            printf("x ");
+    }
+}
+}
+
