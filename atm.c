@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 void cabecalho(float saldo), visualizar_saldo(float saldo);
-float saque(float valor, float saldo), depositar(float valor, float saldo);
+float saque(float valor, float saldo), depositar(float valor, float saldo), pgto_cheque(float valor, float saldo);
 
 int main (){
     float saldo = 0, valor; 
@@ -21,9 +21,7 @@ int main (){
                 visualizar_saldo(saldo);
                 break;
             case 4:
-                printf("Valor do cheque: R$ ");
-                scanf("%f", &valor);
-                saldo = saldo - valor;
+                saldo = pgto_cheque(valor, saldo);
                 visualizar_saldo(saldo);
                 break;
             case 0:
@@ -61,6 +59,7 @@ float saque(float valor, float saldo){
         if (valor > saldo)
             printf("Saldo insuficiente para saque.\n");
     } while (valor > saldo||valor <= 0);
+    printf("Saque realizado com sucesso.\n");
     saldo = saldo - valor;
     return saldo;
 }
@@ -78,6 +77,27 @@ float depositar(float valor, float saldo){
         if (valor < 0)
             printf("Valor informado invalido.\n");
     } while (valor < 0);
+    printf("Deposito realizado com sucesso.\n");
     saldo = saldo + valor;
+    return saldo;
+}
+
+float pgto_cheque(float valor, float saldo){
+    if (saldo <= 0){
+        printf("Saldo insuficiente para pagamento de cheques.\n");
+        return saldo;
+    }
+    do {
+        printf("Valor do cheque: R$ ");
+        scanf("%f", &valor);
+        if (valor <= 0)
+            printf("Valor invalido para pagamento.\n");
+        if (valor > saldo){
+            printf("saldo insuficiente para pagamento.\n");
+            return saldo;
+        }
+    } while (valor <= 0);
+    printf("Pagamento realizado com sucesso.\n");
+    saldo = saldo - valor;
     return saldo;
 }
