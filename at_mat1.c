@@ -16,17 +16,14 @@ Use a estrutura switch-case para a seleção da opção*/
 #include <stdlib.h>
 #include <ctype.h>
 
-void linha(), escrever_matriz(int matriz[3][3]), imprimir_matriz(int matriz[3][3]);
+void cabecalho(), linha(), escrever_matriz(int matriz[3][3]), imprimir_matriz(int matriz[3][3]);
 
 int main (){
     int i, j, matriz[3][3], soma; 
     char opcao;
 
     escrever_matriz(matriz);
-
-        linha();
-        printf("                     MANIPULACAO DE MATRIZES");
-        linha();
+        cabecalho();
     do{
         printf("\nEscolha uma das opcoes abaixo: \n");
         printf("[a] imprimir todos os elementos da matriz.\n");
@@ -125,6 +122,14 @@ int main (){
     }while (opcao!='h');
     printf("\n");
     return 0; 
+}
+
+void cabecalho(){
+    printf("\n--------------------------------------------------------------------\n");
+    printf("                                 ~#~                                  \n");
+    printf("                      MANIPULACAO DE MATRIZES                         \n");
+    printf("                                 ~#~                                  \n");
+    printf("--------------------------------------------------------------------\n");
 }
 
 void linha(){
