@@ -11,18 +11,12 @@ int main (){
     criar_matriz(matriz_orig);
     transpor_matriz(matriz_orig, matriz_transp);
     visualizar_original(matriz_orig);
-
-    printf("\nA matriz transposta fica da seguinte maneira:");//Mostrando a matriz transposta
-    for (i=0; i<linha; i++){
-        printf("\n");
-        for (j=0; j<coluna; j++){
-            printf(" %i ", matriz_transp[i][j]);
-        }
-    }
+    visualizar_transposta(matriz_transp);
     printf("\n");
     system ("pause");
     return 0;
 }
+
 void criar_matriz(int matriz_orig[3][3]){
     int i, linha = 3, j, coluna = 3;
     for (i=0; i<linha; i++){//Recebendo os valores para a matriz original
@@ -53,4 +47,13 @@ void transpor_matriz(int matriz_orig[3][3], int matriz_transp[3][3]){
     }
 } 
 
-void visualizar_transposta(int matriz[3][3]){}
+void visualizar_transposta(int matriz_transp[3][3]){
+    int i, linha = 3, j, coluna = 3;
+    printf("\nA matriz transposta fica da seguinte maneira:");//Mostrando a matriz transposta
+    for (i=0; i<linha; i++){
+        printf("\n");
+        for (j=0; j<coluna; j++){
+            printf(" %i ", matriz_transp[i][j]);
+        }
+    }
+}
