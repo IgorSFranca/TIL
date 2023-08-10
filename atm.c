@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 void cabecalho(float saldo), visualizar_saldo(float saldo);
-float saque(float valor, float saldo);
+float saque(float valor, float saldo), depositar(float valor, float saldo);
 
 int main (){
     float saldo = 0, valor; 
@@ -17,18 +17,14 @@ int main (){
                 visualizar_saldo(saldo);
                 break;
             case 33:
-                printf("Valor do deposito: R$ ");
-                scanf("%f", &valor);
-                saldo = saldo + valor;
-                printf("Saldo atual ......................... R$ %.2f\n\n", saldo);
+                saldo = depositar(valor, saldo);
+                visualizar_saldo(saldo);
                 break;
             case 4:
                 printf("Valor do cheque: R$ ");
                 scanf("%f", &valor);
                 saldo = saldo - valor;
-                printf("Saldo atual ......................... R$ %.2f\n\n", saldo);
-                if (saldo < 0)
-                    printf("O Seu saldo esta negativo.\n");
+                visualizar_saldo(saldo);
                 break;
             case 0:
                 break;
@@ -73,4 +69,15 @@ void visualizar_saldo(float saldo){
     printf("Saldo atual ......................... R$ %.2f\n\n", saldo);
     if (saldo < 0)
         printf("O Seu saldo esta negativo.\n");
+}
+
+float depositar(float valor, float saldo){
+    do{
+        printf("Valor do deposito: R$ ");
+        scanf("%f", &valor);
+        if (valor < 0)
+            printf("Valor informado invalido.\n");
+    } while (valor < 0);
+    saldo = saldo + valor;
+    return saldo;
 }
