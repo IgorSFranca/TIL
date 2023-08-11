@@ -18,37 +18,45 @@ Para esta tarefa, declare o vetor na função main()
 #include <stdlib.h>
 #include <ctype.h>
 
-void duplicar(int vetor[10]), imprimir(int vetor[10]), remover(), criar(int vetor[10]), cabecalho();
+//protótipos
+void duplicar(int vetor[]);
+void imprimir(int vetor[], int *);
+void remover(int vetor[], int *posicao, int tam);
+void criar(int vetor[], int *, int tam);
+void cabecalho();
 char opcao(char);
 
 int main (){
+    // declaração de variáveis
     char escolha;
-    int vetor[10];
-    criar(vetor);
+    int tam = 10;
+    int vetor[tam];
+    int posicao = 0;
 
+    //inicio
+    criar(vetor, &posicao, tam);
     cabecalho();
     do{
         escolha = opcao(escolha);
         switch (escolha){
-            case 'd': duplicar(vetor); imprimir(vetor); break;
-            case 'i': imprimir(vetor); break;
-            case 'r': break;
-            case 's': break;
+            case 'd': duplicar(vetor); imprimir(vetor, &posicao); break;
+            case 'i': imprimir(vetor, &posicao); break;
+            case 'r': remover(vetor, &posicao, tam); break;
         } 
     } while (escolha != 's');
     system ("pause");
     return 0;
 }
 
+//procedimentos e funções
 void cabecalho (){
-    printf("-------------------------------------\n");
+    printf("|-----------------------------------|\n");
     printf("|           ~#  OPCOES  #~          |\n");
     printf("| [D]uplicar os elementos do vetor  |\n");
     printf("| [I]mprimir os elementos do vetor  |\n");
     printf("| [R]emover um elemento do vetor    |\n");
-    printf("| [C]riar um vetor de 4 posicoes    |\n");
     printf("| [S]air                            |\n");
-    printf("-------------------------------------\n");
+    printf("|-----------------------------------|\n");
 }
 
 void duplicar(int vetor[]){
@@ -57,26 +65,40 @@ void duplicar(int vetor[]){
         vetor[i] = 2*(vetor[i]);
 }
 
-void imprimir(int vetor[10]){
+void imprimir(int vetor[], int *posicao){
     int i;
-    for (i=0; i<10; i++){
+    for (i=0; i<=*posicao; i++){
         printf("%i ", vetor[i]);
     }
     printf("\n");
 }
 
-void remover(){}
+void remover(int vetor[], int *posicao, int tam){
+    printf("|------------------------------------------------|\n");
+    printf("| Capacidade de armazenamento:    %i             |\n", tam);
+    printf("| Armazenamento utilizado:        %i             |\n", *posicao+1);
+    *posicao = *posicao-1;
+    printf("|------------------------------------------------|\n");
+    printf("|                      ~~~                       |\n");
+    printf("| Exclusao do ultimo valor realizada com sucesso.|\n");
+    printf("|                      ~~~                       |\n");
+    printf("|------------------------------------------------|\n");
+    printf("| Capacidade de armazenamento:    %i             |\n", tam);
+    printf("| Armazenamento utilizado:        %i              |\n", *posicao+1);
+    printf("|------------------------------------------------|\n");
+}
 
-void criar(int vetor[10]){
+void criar(int vetor[], int *posicao, int tam){
     int i;
-    for (i=0; i<10; i++){
+    for (i=0; i<tam; i++){
         vetor[i] = i;
+        *posicao = i;
     }
 }
 
 char opcao (char opcao){
     do{
-        printf("Informe sua opcao: ");
+        printf("\nInforme sua opcao: ");
         scanf(" %c", &opcao);
         opcao = tolower(opcao);
         if (opcao != 'd' && opcao != 'i' && opcao != 'r' && opcao != 's')
