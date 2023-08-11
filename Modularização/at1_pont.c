@@ -41,7 +41,8 @@ int main (){
         switch (escolha){
             case 'd': duplicar(vetor); imprimir(vetor, &posicao); break;
             case 'i': imprimir(vetor, &posicao); break;
-            case 'r': remover(vetor, &posicao, tam); break;
+            case 'r': remover(vetor, &posicao, tam); imprimir(vetor, &posicao); break;
+            case 's': imprimir(vetor, &posicao); break;
         } 
     } while (escolha != 's');
     system ("pause");
