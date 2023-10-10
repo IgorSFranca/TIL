@@ -125,8 +125,8 @@ int escolha_opcao(int opcao){
 }
 
 void preencher_ranking(banda *artista){
-  int i, j, flagr, flagn;
-  char ranking;
+  int i, j, flag;
+  char ranking, qtd_integrantes;
 
   for (i=0; i<5; i++){
     printf("Artista/Banda n%i\n", i+1);
@@ -136,14 +136,25 @@ void preencher_ranking(banda *artista){
     printf("Informe o genero [sertanejo/rock/pagode/rap]: ");
     fflush (stdin);
     fgets(artista[i].genero, 20, stdin);
-    printf("Quantos integrantes fazem parte da banda?: ");
-    scanf("%i", &artista[i].qtd_integrantes);
+
+    do{ // 'do' de verificação se a qtd de integrandes é numero e não letra
+    flag = 0;
+      printf("Quantos integrantes fazem parte da banda?: ");
+      scanf(" %c", &qtd_integrantes);
+      if (!isdigit(qtd_integrantes)){
+        printf("Valor informado nao eh numero.\n");
+        printf("Insira novamente.\n");
+      }
+      else{
+        artista[i].qtd_integrantes = qtd_integrantes;
+        flag = 1;
+      }
+    } while (flag != 1);
 
     do{ // 'do' de verificação da duplicidade do ranking
-      flagr = 0;
 
       do{ // 'do' de verificação se o ranking é numero e não letra
-        flagn = 0;
+        flag = 0;
         printf("Qual o ranking da banda? [1 ate 5]: ");
         scanf(" %c", &ranking);
         if (!isdigit(ranking)){
@@ -151,8 +162,9 @@ void preencher_ranking(banda *artista){
           printf("Insira novamente.\n");
         }
         else
-          flagn = 1;
-      } while (flagn != 1);
+          flag = 1;
+      } while (flag != 1);
+      flag = 0;
 
       for (j=0; j<5; j++){ //Não permitir que insira ranking duplicado
         if (artista[j].ranking == ranking){
@@ -162,11 +174,11 @@ void preencher_ranking(banda *artista){
         }
         else if (artista[j].ranking == 0){
           artista[i].ranking = ranking;
-          flagr = 1;
+          flag = 1;
           break;
         }
       }
-    } while (flagr != 1);
+    } while (flag != 1);
 
     printf("----------------------------------------------\n");
   }
