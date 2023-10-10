@@ -121,7 +121,7 @@ int escolha_opcao(int opcao){
 }
 
 void preencher_ranking(banda *artista){
-  int i;
+  int i, j, ranking;
 
   for (i=0; i<5; i++){
     printf("Artista/Banda n%i\n", i+1);
@@ -134,7 +134,13 @@ void preencher_ranking(banda *artista){
     printf("Quantos integrantes fazem parte da banda?: ");
     scanf("%i", &artista[i].qtd_integrantes);
     printf("Qual o ranking da banda? [1 ate 5]: ");
-    scanf("%i", &artista[i].ranking);
+    scanf("%i", &ranking)
+    for (j=0; j<5; j++){
+      if (artista[j].ranking == ranking)
+        printf("Este ranking ja esta preenchido na posicao %i", j);
+      else
+        &artista[i].ranking = ranking;
+    }
     printf("----------------------------------------------\n");
   }
 }
