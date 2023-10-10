@@ -209,7 +209,7 @@ void preencher_bandas(banda *artista){
 void mostrar_ranking(banda *artista){
   int i;
 
-  if (artista[0].genero == '0')
+  if (artista[0].genero == '\0')
     printf("Bandas ainda nao cadastradas.\n");
   else{
     printf("As informacoes fornecidas foram: \n\n");
@@ -233,8 +233,6 @@ void mostrar_ranking(banda *artista){
 void busca_ranking(banda *artista){
   int i;
   char ranking;
-  int flag;
-  flag = -1;
 
   printf("Informe o ranking: ");
   scanf("%d", &ranking);
@@ -246,8 +244,6 @@ void busca_ranking(banda *artista){
   }
   printf("\n\n");
   for (i=0; i<5; i++){
-    printf("artista[i].ranking = %c\n", artista[i].ranking);
-    printf("Ranking: %i\n", ranking);
     if (artista[i].ranking == ranking){
       printf("Banda de Ranking: %d \n", ranking);
       printf("Nome da banda/artista: %s", artista[i].nome);
@@ -261,11 +257,10 @@ void busca_ranking(banda *artista){
       else if (artista[i].genero == 4)
         printf("Rap.\n");
       printf("Quantidade de integrantes: %d\n\n", artista[i].qtd_integrantes);
-      flag = 0;
       break;
     }
   }
-    if (flag == -1)
+    if (ranking < 1 || ranking > 4)
       printf("Ranking nao encontrado!\n\n");
   system("pause");
 }
