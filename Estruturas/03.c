@@ -1,9 +1,4 @@
-/*(a) Defina uma nova estrutura para representar uma banda musical. Essa estrutura
-deve ser armazenar informações como nome, gênero, número de integrantes e em que
-posição do ranking essa banda está dentre as suas 5 bandas favoritas.
-(b) Instancie um vetor do tipo estrutura com tamanho 5. Crie um laço para preencher as
-5 variáveis criadas. Após o preenchimento, exiba todas as informações da estrutura.
-(c) Crie uma função que solicite ao usuário um número de 1 até 5. Em seguida, seu
+/*(c) Crie uma função que solicite ao usuário um número de 1 até 5. Em seguida, seu
 programa deve exibir informações da banda cuja posição no seu ranking é a que foi
 solicitada pelo usuário.
 (d) Crie uma função em C que solicite ao usuário um gênero musical e exiba as bandas
@@ -33,7 +28,7 @@ void cabecalho();
 void menu_principal();
 void menu_busca();
 int escolha_opcao(int);
-void preencher_ranking(banda*);
+void preencher_bandas(banda*);
 void mostrar_ranking(banda*);
 void busca_ranking(banda*);
 void busca_genero();
@@ -41,6 +36,7 @@ void busca_nome();
 
 int main (){
   int opcao;
+  int i;
   banda artista [5] = {[0] = {.ranking = {0, 0, 0, 0, 0}}};
 
   do{
@@ -52,7 +48,7 @@ int main (){
       case 1: 
         system ("cls");
         cabecalho();
-        preencher_ranking(&artista);
+        preencher_bandas(artista);
         printf("Preenchimento realizado com sucesso.\n");
         system ("pause");
         break;
@@ -65,7 +61,7 @@ int main (){
           case 1: 
             system("cls");
             cabecalho();
-            busca_ranking(&artista);
+            busca_ranking(artista);
             break;
           case 2: break;
           case 3: break;
@@ -76,7 +72,13 @@ int main (){
         mostrar_ranking(&artista);
         system ("pause");
         break;
-      case 4: printf("Encerrando programa.\n"); break;
+      case 4: 
+        printf("Encerrando");
+        for (i=0; i<3; i++){
+          Sleep(500);
+          printf(".");
+        }
+        break;
       default: printf("Opcao nao encontrada.\n"); break;
     }
   } while (opcao != 4);
@@ -120,7 +122,7 @@ int escolha_opcao(int opcao){
   return opcao;
 }
 
-void preencher_ranking(banda *artista){
+void preencher_bandas(banda *artista){
   int i;
   int j;
   int flag;
@@ -133,7 +135,7 @@ void preencher_ranking(banda *artista){
     printf("Artista/Banda n%i\n", i+1);
     printf("Nome da banda/artista: ");
     fflush (stdin);
-    fgets(artista[i].nome, 20, stdin);
+    fgets(artista[i].nome, 50, stdin);
 
     do{// 'do' de verificação se o usuário informou um gênero válido
       flag = 0;
@@ -156,7 +158,7 @@ void preencher_ranking(banda *artista){
         printf("Insira novamente.\n");
       }
       else{
-        artista[i].qtd_integrantes = qtd_integrantes;
+        artista[i].qtd_integrantes = qtd_integrantes - '0';
         flag = 1;
       }
     } while (flag != 1);
@@ -187,13 +189,13 @@ void preencher_ranking(banda *artista){
       flag = 0;
 
       for (j=0; j<5; j++){ //Não permitir que insira ranking duplicado
-        if (artista[j].ranking == ranking){
+        if (artista[j].ranking == rank){
           printf("Este ranking ja esta preenchido na posicao %i\n", j);
           printf("Insira novamente!\n");
           break;
         }
         else if (artista[j].ranking == 0){
-          artista[i].ranking = ranking;
+          artista[i].ranking = rank;
           flag = 1;
           break;
         }
@@ -207,7 +209,7 @@ void preencher_ranking(banda *artista){
 void mostrar_ranking(banda *artista){
   int i;
 
-  if (artista[0].genero == '\0')
+  if (artista[0].genero == '0')
     printf("Bandas ainda nao cadastradas.\n");
   else{
     printf("As informacoes fornecidas foram: \n\n");
@@ -222,18 +224,20 @@ void mostrar_ranking(banda *artista){
         printf("Pagode.\n");
       else if (artista[i].genero == 4)
         printf("Rap.\n");
-      printf("Quantidade de integrantes: %c\n", artista[i].qtd_integrantes);
-      printf("Ranking: %c\n\n", artista[i].ranking);
+      printf("Quantidade de integrantes: %d\n", artista[i].qtd_integrantes);
+      printf("Ranking: %d\n\n", artista[i].ranking);
     }
   }
 }
 
 void busca_ranking(banda *artista){
-  int i, ranking, flag;
+  int i;
+  char ranking;
+  int flag;
   flag = -1;
 
   printf("Informe o ranking: ");
-  scanf("%i", &ranking);
+  scanf("%d", &ranking);
 
   printf("Procurando");
   for (i=0; i<3; i++){
@@ -242,11 +246,21 @@ void busca_ranking(banda *artista){
   }
   printf("\n\n");
   for (i=0; i<5; i++){
+    printf("artista[i].ranking = %c\n", artista[i].ranking);
+    printf("Ranking: %i\n", ranking);
     if (artista[i].ranking == ranking){
-      printf("Banda de Ranking: %i \n", ranking);
+      printf("Banda de Ranking: %d \n", ranking);
       printf("Nome da banda/artista: %s", artista[i].nome);
-      printf("Genero: %s", artista[i].genero);
-      printf("Quantidade de integrantes: %i\n\n", artista[i].qtd_integrantes);
+      printf("Genero: ");
+      if (artista[i].genero == 1)
+        printf("Sertanejo.\n");
+      else if (artista[i].genero == 2)
+        printf("Rock.\n");
+      else if (artista[i].genero == 3)
+        printf("Pagode.\n");
+      else if (artista[i].genero == 4)
+        printf("Rap.\n");
+      printf("Quantidade de integrantes: %d\n\n", artista[i].qtd_integrantes);
       flag = 0;
       break;
     }
