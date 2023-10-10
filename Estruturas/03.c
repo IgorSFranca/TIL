@@ -24,6 +24,7 @@ Corrigir:
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
+#include <ctype.h>
 
 typedef struct{
   char nome[20];
@@ -124,7 +125,8 @@ int escolha_opcao(int opcao){
 }
 
 void preencher_ranking(banda *artista){
-  int i, j, ranking, flag;
+  int i, j, flagr, flagn;
+  char ranking;
 
   for (i=0; i<5; i++){
     printf("Artista/Banda n%i\n", i+1);
@@ -136,11 +138,23 @@ void preencher_ranking(banda *artista){
     fgets(artista[i].genero, 20, stdin);
     printf("Quantos integrantes fazem parte da banda?: ");
     scanf("%i", &artista[i].qtd_integrantes);
-    do{
-      flag = 0;
-      printf("Qual o ranking da banda? [1 ate 5]: ");
-      scanf("%i", &ranking);
-      for (j=0; j<5; j++){
+
+    do{ // 'do' de verificação da duplicidade do ranking
+      flagr = 0;
+
+      do{ // 'do' de verificação se o ranking é numero e não letra
+        flagn = 0;
+        printf("Qual o ranking da banda? [1 ate 5]: ");
+        scanf(" %c", &ranking);
+        if (!isdigit(ranking)){
+          printf("Valor informado nao eh numero.\n");
+          printf("Insira novamente.\n");
+        }
+        else
+          flagn = 1;
+      } while (flagn != 1);
+
+      for (j=0; j<5; j++){ //Não permitir que insira ranking duplicado
         if (artista[j].ranking == ranking){
           printf("Este ranking ja esta preenchido na posicao %i\n", j);
           printf("Insira novamente!\n");
@@ -148,11 +162,12 @@ void preencher_ranking(banda *artista){
         }
         else if (artista[j].ranking == 0){
           artista[i].ranking = ranking;
-          flag = 1;
+          flagr = 1;
           break;
         }
       }
-    } while (flag != 1);
+    } while (flagr != 1);
+
     printf("----------------------------------------------\n");
   }
 }
