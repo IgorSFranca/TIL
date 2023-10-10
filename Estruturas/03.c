@@ -15,8 +15,6 @@ suas bandas favoritas ou não.
 as estruturas e todas as opções dos subitens anteriores.
 
 Corrigir: 
-3. Alterar a informação do genero para índice e travar caso o usuário digite 
-um índice errado
 4. Não aceitar ranking diferente do intervalo de 1 a 5
 5. Está printando todas as bandas depois de procurar
 */
@@ -125,8 +123,13 @@ int escolha_opcao(int opcao){
 }
 
 void preencher_ranking(banda *artista){
-  int i, j, flag;
-  char ranking, qtd_integrantes;
+  int i;
+  int j;
+  int flag;
+  int rank;
+  char ranking;
+  char qtd_integrantes;
+  char ranking_str[2];
 
   for (i=0; i<5; i++){
     printf("Artista/Banda n%i\n", i+1);
@@ -170,8 +173,18 @@ void preencher_ranking(banda *artista){
           printf("Valor informado nao eh numero.\n");
           printf("Insira novamente.\n");
         }
-        else
-          flag = 1;
+        else{
+          ranking_str[0] = ranking;
+          ranking_str[1] = '\0';
+          rank = atoi(ranking_str);
+          
+          if (rank < 1 || rank > 5){
+            printf("Ranking informado invalido.\n");
+            printf("Informe um ranking entre 1 e 5.\n");
+          }
+          else
+            flag = 1;
+        }
       } while (flag != 1);
       flag = 0;
 
