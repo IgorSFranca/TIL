@@ -15,7 +15,10 @@ suas bandas favoritas ou não.
 as estruturas e todas as opções dos subitens anteriores.
 
 Corrigir: 
-1. Não deixar que o usuário digite ranking já digitado anteriormente 
+2. Não pode deixar inserir letra no ranking e na quantidade de integrantes
+3. Alterar a informação do genero para índice e travar caso o usuário digite um índice errado
+4. Não aceitar ranking diferente do intervalo de 1 a 5
+5. Está printando todas as bandas depois de procurar
 */
 
 #include <stdio.h>
@@ -40,8 +43,8 @@ void busca_genero();
 void busca_nome();
 
 int main (){
-  banda artista [5];
   int opcao;
+  banda artista [5] = {[0] = {.ranking = {0, 0, 0, 0, 0}}};
 
   do{
     system ("cls");
@@ -121,7 +124,7 @@ int escolha_opcao(int opcao){
 }
 
 void preencher_ranking(banda *artista){
-  int i, j, ranking;
+  int i, j, ranking, flag;
 
   for (i=0; i<5; i++){
     printf("Artista/Banda n%i\n", i+1);
@@ -133,14 +136,23 @@ void preencher_ranking(banda *artista){
     fgets(artista[i].genero, 20, stdin);
     printf("Quantos integrantes fazem parte da banda?: ");
     scanf("%i", &artista[i].qtd_integrantes);
-    printf("Qual o ranking da banda? [1 ate 5]: ");
-    scanf("%i", &ranking)
-    for (j=0; j<5; j++){
-      if (artista[j].ranking == ranking)
-        printf("Este ranking ja esta preenchido na posicao %i", j);
-      else
-        &artista[i].ranking = ranking;
-    }
+    do{
+      flag = 0;
+      printf("Qual o ranking da banda? [1 ate 5]: ");
+      scanf("%i", &ranking);
+      for (j=0; j<5; j++){
+        if (artista[j].ranking == ranking){
+          printf("Este ranking ja esta preenchido na posicao %i\n", j);
+          printf("Insira novamente!\n");
+          break;
+        }
+        else if (artista[j].ranking == 0){
+          artista[i].ranking = ranking;
+          flag = 1;
+          break;
+        }
+      }
+    } while (flag != 1);
     printf("----------------------------------------------\n");
   }
 }
