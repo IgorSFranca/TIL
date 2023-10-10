@@ -1,7 +1,4 @@
 /*
-(d) Crie uma função em C que solicite ao usuário um gênero musical e exiba as bandas
-deste gênero em seu ranking. Obs.: Utilize a função strcmp da biblioteca string.h
-para comparar duas strings.
 (e) Crie uma função que peça o nome de uma banda ao usuário e diga se ela está entre
 suas bandas favoritas ou não.
 */
@@ -26,7 +23,7 @@ void preencher_bandas(banda*);
 void mostrar_ranking(banda*);
 void busca_ranking(banda*);
 void busca_genero(banda*);
-void busca_nome();
+void busca_nome(banda*);
 
 int main (){
   int opcao;
@@ -63,6 +60,9 @@ int main (){
             busca_genero(artista);
             break; 
           case 3: //Procura por nome
+            system("cls");
+            cabecalho();
+            busca_nome(artista);
             break;
           case 4: break;
           default: 
@@ -268,5 +268,31 @@ void busca_genero(banda *artista){
   if (flag == -1)
     printf("Genero nao encontrado.\n");
 
+  system("pause");
+}
+
+void busca_nome (banda *artista){
+  int i;
+  int flag;
+  char nome[50];
+  flag = -1;
+
+  printf("Informe o nome da banda para busca: ");
+  fflush(stdin);
+  fgets(nome, 50, stdin);
+
+  for (i=0; i<5; i++){
+    if (strcmp(artista[i].nome, nome) == 0){
+      printf("Esta banda esta no ranking!\n");
+      printf("---------------------------\n");
+      printf("Nome da banda/artista: %s", artista[i].nome);
+      printf("Genero: %s", artista[i].genero);
+      printf("Quantidade de integrantes: %d\n", artista[i].qtd_integrantes);
+      printf("Ranking: %d\n\n", artista[i].ranking);
+      flag = 0;
+    }
+  }
+  if (flag == -1)
+    printf("Esta banda nao esta no ranking.\n");
   system("pause");
 }
