@@ -15,7 +15,6 @@ suas bandas favoritas ou não.
 as estruturas e todas as opções dos subitens anteriores.
 
 Corrigir: 
-4. Não aceitar ranking diferente do intervalo de 1 a 5
 5. Está printando todas as bandas depois de procurar
 */
 
@@ -25,7 +24,7 @@ Corrigir:
 #include <ctype.h>
 
 typedef struct{
-  char nome[20];
+  char nome[50];
   int genero;
   int qtd_integrantes;
   int ranking;
@@ -177,7 +176,7 @@ void preencher_ranking(banda *artista){
           ranking_str[0] = ranking;
           ranking_str[1] = '\0';
           rank = atoi(ranking_str);
-          
+
           if (rank < 1 || rank > 5){
             printf("Ranking informado invalido.\n");
             printf("Informe um ranking entre 1 e 5.\n");
@@ -212,9 +211,17 @@ void mostrar_ranking(banda *artista){
   printf("As informacoes fornecidas foram: \n\n");
   for (i=0; i<5; i++){
     printf("Nome da banda/artista: %s", artista[i].nome);
-    printf("Genero: %s", artista[i].genero);
-    printf("Quantidade de integrantes: %i\n", artista[i].qtd_integrantes);
-    printf("Ranking: %i\n\n", artista[i].ranking);
+    printf("Genero: ");
+    if (artista[i].genero == 1)
+      printf("Sertanejo.\n");
+    else if (artista[i].genero == 2)
+      printf("Rock.\n");
+    else if (artista[i].genero == 3)
+      printf("Pagode.\n");
+    else if (artista[i].genero == 4)
+      printf("Rap.\n");
+    printf("Quantidade de integrantes: %c\n", artista[i].qtd_integrantes);
+    printf("Ranking: %c\n\n", artista[i].ranking);
   }
 }
 
