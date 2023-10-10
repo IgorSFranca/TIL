@@ -15,8 +15,8 @@ suas bandas favoritas ou não.
 as estruturas e todas as opções dos subitens anteriores.
 
 Corrigir: 
-2. Não pode deixar inserir letra no ranking e na quantidade de integrantes
-3. Alterar a informação do genero para índice e travar caso o usuário digite um índice errado
+3. Alterar a informação do genero para índice e travar caso o usuário digite 
+um índice errado
 4. Não aceitar ranking diferente do intervalo de 1 a 5
 5. Está printando todas as bandas depois de procurar
 */
@@ -28,7 +28,7 @@ Corrigir:
 
 typedef struct{
   char nome[20];
-  char genero[20];
+  int genero;
   int qtd_integrantes;
   int ranking;
 } banda;
@@ -133,12 +133,21 @@ void preencher_ranking(banda *artista){
     printf("Nome da banda/artista: ");
     fflush (stdin);
     fgets(artista[i].nome, 20, stdin);
-    printf("Informe o genero [sertanejo/rock/pagode/rap]: ");
-    fflush (stdin);
-    fgets(artista[i].genero, 20, stdin);
+
+    do{// 'do' de verificação se o usuário informou um gênero válido
+      flag = 0;
+      printf("Informe o genero [1-sertanejo/ 2-rock/ 3-pagode/ 4-rap]: ");
+      scanf("%i", &artista[i].genero);
+      if (artista[i].genero < 1 || artista[i].genero > 4){
+        printf("Genero informado invalido.\n");
+        printf("Informe novamente.\n");
+      }
+      else
+        flag = 1;
+    } while (flag != 1);
 
     do{ // 'do' de verificação se a qtd de integrandes é numero e não letra
-    flag = 0;
+      flag = 0;
       printf("Quantos integrantes fazem parte da banda?: ");
       scanf(" %c", &qtd_integrantes);
       if (!isdigit(qtd_integrantes)){
